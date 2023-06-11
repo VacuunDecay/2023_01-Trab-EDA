@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1686512367 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
+	<iostream>
+	"teste.cpp"
+
+1686512488 c:\users\catreco\documents\github\2023_01-trab-eda\teste.cpp
+	"TARVB.h"
+	"test.h"
+
+1602082215 c:\users\catreco\documents\github\2023_01-trab-eda\tarvb.h
+	<stdio.h>
+	<stdlib.h>
+
+1686512367 c:\users\catreco\documents\github\2023_01-trab-eda\test.h
+
+1602082981 source:c:\users\catreco\documents\github\2023_01-trab-eda\tarvb.cpp
+	"TARVB.h"
+
