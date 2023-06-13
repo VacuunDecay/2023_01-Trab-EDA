@@ -1,8 +1,9 @@
 #include <iostream>
-#include "teste.cpp"
+#include "test.h"
+#include "Menus.h"
 
 int main()
 {
-    text();
+    Menu();
     return 0;
 }

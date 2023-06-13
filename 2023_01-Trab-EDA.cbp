@@ -32,7 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="TARVB.cpp" />
+		<Unit filename="TARVB.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="test.cpp" />
+		<Unit filename="test.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
