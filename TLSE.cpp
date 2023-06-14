@@ -15,10 +15,11 @@ void TLSE_imprime(TLSE *l){
     int *vet = p->info;
     printf("--------------------\n");
     printf("Ano: %d\n", p->ano);
-    printf("Slams: %d, %d, %d, %d\n", vet[0],vet[1],vet[2],vet[3]);
+    printf("Slams: %d, %d, %d, %d\n", p->info[0], p->info[1], p->info[2], p->info[3]);
+    //printf("Slams: %d, %d, %d, %d\n", vet[0],vet[1],vet[2],vet[3]);
     p = p->prox;
   }
-  printf("\n"); 
+  printf("\n");
 }
 
 void TLSE_libera(TLSE *l){
@@ -28,12 +29,12 @@ void TLSE_libera(TLSE *l){
     p = p->prox;
     free(q->info);
     free(q);
-  } 
+  }
 }
 
 TLSE* TLSE_busca(TLSE *l, int ano){
   TLSE *p = l;
-  while((p) && (p->ano != ano)) p = p->prox; 
+  while((p) && (p->ano != ano)) p = p->prox;
   return p;
 }
 

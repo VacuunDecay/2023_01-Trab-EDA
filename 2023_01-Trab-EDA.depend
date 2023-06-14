@@ -41,7 +41,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1686702028 c:\users\catreco\documents\github\2023_01-trab-eda\tlse.h
+1686704481 c:\users\catreco\documents\github\2023_01-trab-eda\tlse.h
 	<stdio.h>
 	<stdlib.h>
 
@@ -49,4 +49,8 @@
 	"TLSE.h"
 
 1686703469 c:\users\catreco\documents\github\2023_01-trab-eda\myutil.h
+
+1686703580 source:c:\users\catreco\documents\github\2023_01-trab-eda\myutil.cpp
+	"MyUtil.h"
+	<stdio.h>
 

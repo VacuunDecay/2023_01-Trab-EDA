@@ -32,8 +32,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="BTree.cpp" />
+		<Unit filename="BTree.h" />
+		<Unit filename="Menus.cpp" />
+		<Unit filename="Menus.h" />
+		<Unit filename="MyUtil.cpp" />
+		<Unit filename="MyUtil.h" />
+		<Unit filename="README.md" />
 		<Unit filename="TARVB.cpp" />
 		<Unit filename="TARVB.h" />
+		<Unit filename="TLSE.cpp" />
+		<Unit filename="TLSE.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="test.cpp" />
 		<Unit filename="test.h" />
