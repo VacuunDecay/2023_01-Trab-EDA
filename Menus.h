@@ -5,10 +5,16 @@
 #include <stdlib.h>
 
 // Function prototypes
-void option1();
-void option2();
-void submenuOption1();
-void submenuOption2();
+void exercicoA();
+void exercicoB();
+void exercicoC();
+void exercicoD();
+void exercicoE();
+void exercicoF();
+void exercicoG();
+//void MenuDeTestes(); // Acho que isso nao serve pra nada...
+//void TesteDeBTreeOriginal();
+//void TesteDeListaModificada();
 
 
 void clearScreen();

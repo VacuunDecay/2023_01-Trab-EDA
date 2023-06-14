@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1686696156 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
-	<iostream>
+1686702033 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
+	<stdio.h>
+	<stdlib.h>
 	"test.h"
 	"Menus.h"
+	"TLSE.h"
 
 1686512488 c:\users\catreco\documents\github\2023_01-trab-eda\teste.cpp
 	"TARVB.h"
@@ -12,21 +14,39 @@
 	<stdio.h>
 	<stdlib.h>
 
-1686512640 c:\users\catreco\documents\github\2023_01-trab-eda\test.h
+1686701895 c:\users\catreco\documents\github\2023_01-trab-eda\test.h
 
 1602082981 source:c:\users\catreco\documents\github\2023_01-trab-eda\tarvb.cpp
 	"TARVB.h"
 
-1686512640 source:c:\users\catreco\documents\github\2023_01-trab-eda\test.cpp
+1686703467 source:c:\users\catreco\documents\github\2023_01-trab-eda\test.cpp
 	"TARVB.h"
 	"test.h"
+	"TLSE.h"
+	"MyUtil.h"
 
-1686696097 source:c:\users\catreco\documents\github\2023_01-trab-eda\menus.cpp
+1686702686 source:c:\users\catreco\documents\github\2023_01-trab-eda\menus.cpp
 	"Menus.h"
+	"test.h"
+
+1686702668 c:\users\catreco\documents\github\2023_01-trab-eda\menus.h
 	<stdio.h>
 	<stdlib.h>
 
-1686696206 c:\users\catreco\documents\github\2023_01-trab-eda\menus.h
+1686700773 source:c:\users\catreco\documents\github\2023_01-trab-eda\btree.cpp
+	"BTree.h"
+
+1686702094 c:\users\catreco\documents\github\2023_01-trab-eda\btree.h
+	"TLSE.h"
 	<stdio.h>
 	<stdlib.h>
+
+1686702028 c:\users\catreco\documents\github\2023_01-trab-eda\tlse.h
+	<stdio.h>
+	<stdlib.h>
+
+1686700332 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlse.cpp
+	"TLSE.h"
+
+1686703469 c:\users\catreco\documents\github\2023_01-trab-eda\myutil.h
 

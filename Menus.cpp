@@ -1,16 +1,28 @@
 #include "Menus.h"
- 
+#include "test.h"
  // made in part by chatGPT
-void option1(){
+void exercicoA(){
 
 }
-void option2(){
+void exercicoB(){
 
 }
-void submenuOption1(){
+void exercicoC(){
 
 }
-void submenuOption2(){
+void exercicoD(){
+
+}
+void exercicoE(){
+
+}
+void exercicoF(){
+
+}
+void exercicoG(){
+
+}
+void MenuDeTestes(){
 
 }
 
@@ -29,23 +41,27 @@ int Menu(){
 
     while (1) {
         clearScreen();
-        printf("\n------ Main Menu ------\n");
-        printf("1. Option 1\n");
-        printf("2. Option 2\n");
-        printf("3. SubMenu\n");
-        // Add menu options 3 to 9 here
+        printf("\n------ Principal Menu ------\n");
+        printf("1. exercico A\n");
+        printf("2. exercico B\n");
+        printf("3. exercico C\n");
+        printf("4. exercico D\n");
+        printf("5. exercico E\n");
+        printf("6. exercico F\n");
+        printf("7. exercico G\n");
+        printf("8. Menu de Testes\n");
         printf("9. Exit\n");
         printf("Digite sua escolha: ");
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1:
-                option1();
-                break;
-            case 2:
-                option2();
-                break;
-            // Add cases for options 3 to 9 here
+            case 1: exercicoA(); break;
+            case 2: exercicoB(); break;
+            case 3: exercicoC(); break;
+            case 4: exercicoD(); break;
+            case 5: exercicoE(); break;
+            case 6: exercicoF(); break;
+            case 7: exercicoG(); break;
             case 9:
                 clearScreen();
                 printf("Exiting the program...\n");
@@ -54,25 +70,21 @@ int Menu(){
                 printf("Invalid choice. Please try again.\n");
         }
 
-        if (choice == 3) {
+        if (choice == 8) {
             while (1) {
                 clearScreen();
-                printf("\n------ Submenu ------\n");
-                printf("1. Submenu Option 1\n");
-                printf("2. Submenu Option 2\n");
+                printf("\n------ Menu de Exercicios ------\n");
+                printf("1. Teste da BTree Horiginal\n");
+                printf("2. Teste da Lista Modificada\n");
                 // Add submenu options 3 to 9 here
                 printf("9. Go back to Main Menu\n");
                 printf("Enter your choice: ");
                 scanf("%d", &submenuChoice);
 
                 switch (submenuChoice) {
-                    case 1:
-                        submenuOption1();
-                        break;
-                    case 2:
-                        submenuOption2();
-                        break;
-                    // Add cases for submenu options 3 to 9 here
+                    case 1: profTeste(); break;
+                    case 2: testeLista(); break;
+                    //Adicione mas opsoes aqui
                     case 9:
                         clearScreen();
                         printf("Returning to Main Menu...\n");
