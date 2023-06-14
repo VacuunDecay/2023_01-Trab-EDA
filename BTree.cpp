@@ -5,18 +5,20 @@ BT *BT_Inicializa(){
 }
 
 BT *BT_Cria(int t){
-  BT* novo = (BT*)malloc(sizeof(BT));
-  novo->nchaves = 0;
-  novo->folha=1;
-  novo->filho = (BT**)malloc(sizeof(BT*)*t*2);
-  novo->chave =(char**)malloc(sizeof(char*)*((t*2)-1));
-  novo->slans = NULL;
-  novo->active = NULL;
-  int i;
-  for(i = 0; i < (t*2); i++) novo->filho[i] = NULL;
-  for(i = 0; i < (t*2); i++)
-    novo->chave[i] =(char*)malloc(sizeof(char)*50);// 50 � arbitrario
-  return novo;
+    BT* novo = (BT*)malloc(sizeof(BT));
+    novo->nchaves = 0;
+    novo->folha=1;
+    novo->filho = (BT**)malloc(sizeof(BT*)*t*2);
+    novo->chave =(char**)malloc(sizeof(char*)*((t*2)-1));
+    novo->slans = NULL;
+    novo->active = NULL;
+    int i;
+    for(i = 0; i < (t*2); i++) novo->filho[i] = NULL;
+    for (i = 0; i < ((2 * t) - 1); i++) {
+        novo->chave[i] = (char*)malloc(sizeof(char) * 50);
+        novo->chave[i][0] = '\0';
+    }
+    return novo;
 }
 
 BT *BT_Libera(BT *a){
@@ -53,30 +55,35 @@ BT *Divisao(BT *x, int i, BT* y, int t){
 }
 
 // Acho que para comparar strins preciso da biblioteca strings
-BT *Insere_Nao_Completo(BT *x, char* k, int t){
-  int i = x->nchaves-1;
-  if(x->folha){
-    while((i>=0) && (k<x->chave[i])){
-      x->chave[i+1] = x->chave[i];
-      i--;
+BT *Insere_Nao_Completo(BT *x, char* k, int t) {
+    int i = x->nchaves - 1;
+    if (x->folha) {
+        while ((i >= 0) && (strcmp(k, x->chave[i]) < 0)) {
+            char* aux2 = x->chave[i+1];
+            char* aux1 = x->chave[i];
+            x->chave[i+1] = x->chave[i];
+            i--;
+        }
+        x->chave[i+1] = k;
+        x->nchaves++;
+        return x;
     }
-    x->chave[i+1] = k;
-    x->nchaves++;
+    while ((i >= 0) && (strcmp(k, x->chave[i]) < 0))
+        i--;
+    i++;
+    if (x->filho[i]->nchaves == ((2*t)-1)) {
+        x = Divisao(x, (i+1), x->filho[i], t);
+        if (strcmp(k, x->chave[i]) > 0)
+            i++;
+    }
+    x->filho[i] = Insere_Nao_Completo(x->filho[i], k, t);
     return x;
-  }
-  while((i>=0) && (k<x->chave[i])) i--;
-  i++;
-  if(x->filho[i]->nchaves == ((2*t)-1)){
-    x = Divisao(x, (i+1), x->filho[i], t);
-    if(k>x->chave[i]) i++;
-  }
-  x->filho[i] = Insere_Nao_Completo(x->filho[i], k, t);
-  return x;
 }
 
 
+
 BT *BT_Insere(BT *T, char* k, int t){
-  if(BT_Busca_Nome(T,k)) return T;
+  //if(BT_Busca_Nome(T,k)) return T;
   if(!T){
     T=BT_Cria(t);
     T->chave[0] = k;
@@ -107,7 +114,7 @@ void imp_rec(BT *a, int andar){
     for(i=0; i<=a->nchaves-1; i++){
       imp_rec(a->filho[i],andar+1);
       for(j=0; j<=andar; j++) printf("\t");
-      printf("----------------------\n");
+      printf("\n");
 
       for(j=0; j<=andar; j++) printf("\t");
       printf("Nome: %s\n", a->chave[i]);
@@ -116,6 +123,7 @@ void imp_rec(BT *a, int andar){
       printf("Active: %d\n", a->active);
 
       for(j=0; j<=andar; j++) printf("\t");
+      if(!a->slans) continue;
       printf("Slams: %d, %d, %d, %d\n",
              a->slans->info[0],
              a->slans->info[1],
