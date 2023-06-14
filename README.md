@@ -10,3 +10,16 @@
 -> TLSE -> uma lista simplesmente encadeada modificada para servir a estrutura principal
 
 OBS: Para inserir um valor na nova TLSE presisamos de um vetor alocado dinamicamente
+
+## Distribuição de tarefas
+
+### ToDo
+- Estrutura da BTree -> Todas as funções na biblioteca BTree.h
+
+### Fazendo
+- [seu nome] - [Descrição ou nome da tarefa]
+### Feito
+- [seu nome] - [Descrição ou nome da tarefa]
+
+
+
