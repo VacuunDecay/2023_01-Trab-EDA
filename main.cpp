@@ -4,12 +4,14 @@
 #include "Menus.h"
 #include "TLSE.h"
 #include "BTree.h"
-
+void ln(){
+    printf("\n");
+}
 int main()
 {
     BT* tree = BT_Inicializa();
 
-    tree = BT_Insere(tree, "Jorge", 2);
+    tree = BT_Insere(tree, "J", 2);
     tree = BT_Insere(tree, "Felipe", 2);
     tree = BT_Insere(tree, "Camila", 2);
     tree = BT_Insere(tree, "Clay", 2);
@@ -19,6 +21,9 @@ int main()
     tree = BT_Insere(tree, "Amanda", 2);
 
     BT_Imprime(tree);
+    ln();
+    BT_Imprime_el(tree, "Clay");
+
     //Menu();
     return 0;
 }

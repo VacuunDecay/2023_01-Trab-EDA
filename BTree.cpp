@@ -10,13 +10,21 @@ BT *BT_Cria(int t){
     novo->folha=1;
     novo->filho = (BT**)malloc(sizeof(BT*)*t*2);
     novo->chave =(char**)malloc(sizeof(char*)*((t*2)-1));
-    novo->slans = NULL;
-    novo->active = NULL;
+    novo->slans = (TLSE**)malloc(sizeof(TLSE*)*((t*2)-1));
+    novo->active = (Active**)malloc(sizeof(Active*)*((t*2)-1));
     int i;
     for(i = 0; i < (t*2); i++) novo->filho[i] = NULL;
     for (i = 0; i < ((2 * t) - 1); i++) {
         novo->chave[i] = (char*)malloc(sizeof(char) * 50);
         novo->chave[i][0] = '\0';
+    }
+
+    for (i = 0; i < ((2 * t) - 1); i++) {
+        novo->slans[i] = NULL;
+    }
+
+    for (i = 0; i < ((2 * t) - 1); i++) {
+        novo->active[i] = NULL;
     }
     return novo;
 }
@@ -25,8 +33,13 @@ BT *BT_Libera(BT *a){
 
 }
 
-BT *BT_Busca_Nome(BT* x, char* name){
-
+BT *BT_Busca_Nome(BT* x, char* nome){
+  if(!x) return NULL;
+  int i = 0;
+  while(i < x->nchaves && strcmp(nome, x->chave[i]) > 0) i++;
+  if(i < x->nchaves && strcmp(nome, x->chave[i]) == 0) return x;
+  if(x->folha) return NULL;
+  return BT_Busca_Nome(x->filho[i], nome);
 }
 
 BT *BT_Busca_Pais(BT* x, char* pais){
@@ -83,7 +96,7 @@ BT *Insere_Nao_Completo(BT *x, char* k, int t) {
 
 
 BT *BT_Insere(BT *T, char* k, int t){
-  //if(BT_Busca_Nome(T,k)) return T;
+  if(BT_Busca_Nome(T,k)) return T;
   if(!T){
     T=BT_Cria(t);
     T->chave[0] = k;
@@ -120,15 +133,15 @@ void imp_rec(BT *a, int andar){
       printf("Nome: %s\n", a->chave[i]);
 
       for(j=0; j<=andar; j++) printf("\t");
-      printf("Active: %d\n", a->active);
+      printf("Active: %d\n", a->active[i]);
 
       for(j=0; j<=andar; j++) printf("\t");
-      if(!a->slans) continue;
+      if(!a->slans[i]) continue;
       printf("Slams: %d, %d, %d, %d\n",
-             a->slans->info[0],
-             a->slans->info[1],
-             a->slans->info[2],
-             a->slans->info[3]);
+             a->slans[i]->info[0],
+             a->slans[i]->info[1],
+             a->slans[i]->info[2],
+             a->slans[i]->info[3]);
     }
     imp_rec(a->filho[i],andar+1);
   }
@@ -139,3 +152,29 @@ void BT_Imprime(BT *a){
   imp_rec(a, 0);
 }
 
+
+void BT_Imprime_el(BT *a, char* nome){
+    BT* no = BT_Busca_Nome(a, nome);
+
+    if(!no){
+        printf("no Nao encontrado");
+        return;
+    }
+    for(int i = 0; i < no->nchaves; i++){
+        if (strcmp(no->chave[i], nome) != 0) continue;
+        printf("\n");
+
+        printf("Nome: %s\n", no->chave[i]);
+
+        printf("Active: %d\n", no->active[i]);
+
+        if(!a->slans[i]) continue;
+          printf("Slams: %d, %d, %d, %d\n",
+                 a->slans[i]->info[0],
+                 a->slans[i]->info[1],
+                 a->slans[i]->info[2],
+                 a->slans[i]->info[3]);
+
+    }
+
+}
