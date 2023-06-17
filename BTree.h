@@ -21,15 +21,15 @@ typedef struct PlayTree{
 }BT;
 
 //Implementadas
+BT *BT_Cria(int t);
 BT *BT_Inicializa();
+BT *BT_Libera(BT *a);
+BT *BT_Busca_Nome(BT* x, char* nome); // IPC 1
 BT *BT_Insere(BT *T, char* k, int t); //TODO: Mudar parametros
 void BT_Imprime(BT *a);
 void BT_Imprime_el(BT *a, char* nome);
 
 //Nao implementadas
-BT *BT_Cria(int t);
-BT *BT_Libera(BT *a);
-BT *BT_Busca_Nome(BT* x, char* nome); // IPC 1
 BT *BT_Busca_Pais(BT* x, char* pais);
 BT *BT_Carrega(BT *T, int k, int t); // ?
 BT* BT_Retira(BT* arv, char* k, int t);

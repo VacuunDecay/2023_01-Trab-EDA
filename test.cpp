@@ -2,7 +2,29 @@
 #include "test.h"
 #include "TLSE.h"
 #include "MyUtil.h"
+#include "BTree.h"
+#include "MyUtil.h"
 
+void testeBTreeInset(){
+    BT* tree = BT_Inicializa();
+
+    tree = BT_Insere(tree, "Joao", 2);
+    tree = BT_Insere(tree, "Felipe", 2);
+    tree = BT_Insere(tree, "Camila", 2);
+    tree = BT_Insere(tree, "Clay", 2);
+    tree = BT_Insere(tree, "Glory", 2);
+    tree = BT_Insere(tree, "Starflat", 2);
+    tree = BT_Insere(tree, "Kastrel", 2);
+    tree = BT_Insere(tree, "Amanda", 2);
+
+    BT_Imprime(tree);
+    ln();
+    BT_Imprime_el(tree, "Kastrel");
+
+    //Menu();
+    BT_Libera(tree);
+
+}
 
 int testeLista(){
     int banco[5][4] = {

@@ -4,26 +4,27 @@
 #include "Menus.h"
 #include "TLSE.h"
 #include "BTree.h"
-void ln(){
-    printf("\n");
-}
+#include "MyUtil.h"
+
 int main()
 {
-    BT* tree = BT_Inicializa();
+    FILE* fp = fopen("era_aberta_grand_slams.txt", "r");
+    if (fp == NULL) {
+        printf("Failed to open the file.\n");
+        exit(1);
+    }
+    char line[100];
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        int numTokens = 4;
+        char** tokens = splitStr(line, "\t", numTokens);
 
-    tree = BT_Insere(tree, "J", 2);
-    tree = BT_Insere(tree, "Felipe", 2);
-    tree = BT_Insere(tree, "Camila", 2);
-    tree = BT_Insere(tree, "Clay", 2);
-    tree = BT_Insere(tree, "Glory", 2);
-    tree = BT_Insere(tree, "Starflat", 2);
-    tree = BT_Insere(tree, "Kastrel", 2);
-    tree = BT_Insere(tree, "Amanda", 2);
+        printf("Tokens:\n");
+        for (int i = 0; i < numTokens; i++) {
+            printf("%s\n", tokens[i]);
+            free(tokens[i]);
+        }
 
-    BT_Imprime(tree);
-    ln();
-    BT_Imprime_el(tree, "Clay");
-
-    //Menu();
+        free(tokens);
+    }
     return 0;
 }

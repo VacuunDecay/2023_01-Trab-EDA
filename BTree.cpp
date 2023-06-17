@@ -30,7 +30,22 @@ BT *BT_Cria(int t){
 }
 
 BT *BT_Libera(BT *a){
-
+  if(a){
+    if(!a->folha){
+      int i;
+      for(i = 0; i <= a->nchaves; i++) BT_Libera(a->filho[i]);
+    }
+    free(a->chave);
+    free(a->filho);
+    for(int i = 0; i > a->nchaves; i++)
+        free(a->active[i]);
+    free(a->active);
+    for(int i = 0; i < a->nchaves; i++)
+        TLSE_libera(a->slans[i]);
+    free(a->slans);
+    free(a);
+    return NULL;
+  }
 }
 
 BT *BT_Busca_Nome(BT* x, char* nome){
@@ -67,7 +82,6 @@ BT *Divisao(BT *x, int i, BT* y, int t){
   return x;
 }
 
-// Acho que para comparar strins preciso da biblioteca strings
 BT *Insere_Nao_Completo(BT *x, char* k, int t) {
     int i = x->nchaves - 1;
     if (x->folha) {
@@ -93,8 +107,6 @@ BT *Insere_Nao_Completo(BT *x, char* k, int t) {
     return x;
 }
 
-
-
 BT *BT_Insere(BT *T, char* k, int t){
   if(BT_Busca_Nome(T,k)) return T;
   if(!T){
@@ -115,7 +127,6 @@ BT *BT_Insere(BT *T, char* k, int t){
   T = Insere_Nao_Completo(T,k,t);
   return T;
 }
-
 
 BT* BT_Retira(BT* arv, int k, int t){
 

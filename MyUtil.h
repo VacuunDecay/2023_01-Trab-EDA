@@ -13,5 +13,7 @@ void waitKey();
 /**(Nao Implementada)Transforma um numero representado em string em um interio*/
 int strToInt(char* num);
 /**(Nao Implementada)Divide line em toda ocorrencia de uma key esoecifica e retorna um vetor de strings*/
-char** splitStr(char* line, char key);
+char** splitStr(char* line, char* key, int numCol);
+/**Quebra uma linha no terminal*/
+void ln();
 #endif  // MYUTIL_H
