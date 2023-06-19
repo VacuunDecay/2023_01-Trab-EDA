@@ -1,5 +1,7 @@
 #include "BTree.h"
 
+
+
 BT *BT_Inicializa(){
     return NULL;
 }
@@ -48,13 +50,17 @@ BT *BT_Libera(BT *a){
   }
 }
 
-BT *BT_Busca_Nome(BT* x, char* nome){
+BT *BT_Busca_Nome(BT* x, char* nome, int* pos){
   if(!x) return NULL;
   int i = 0;
   while(i < x->nchaves && strcmp(nome, x->chave[i]) > 0) i++;
-  if(i < x->nchaves && strcmp(nome, x->chave[i]) == 0) return x;
+  if(i < x->nchaves && strcmp(nome, x->chave[i]) == 0){
+    if(pos)
+      *pos = i;
+    return x;
+  }
   if(x->folha) return NULL;
-  return BT_Busca_Nome(x->filho[i], nome);
+  return BT_Busca_Nome(x->filho[i], nome, pos);
 }
 
 BT *BT_Busca_Pais(BT* x, char* pais){
@@ -108,7 +114,7 @@ BT *Insere_Nao_Completo(BT *x, char* k, int t) {
 }
 
 BT *BT_Insere(BT *T, char* k, int t){
-  if(BT_Busca_Nome(T,k)) return T;
+  if(BT_Busca_Nome(T,k, NULL)) return T;
   if(!T){
     T=BT_Cria(t);
     T->chave[0] = k;
@@ -146,13 +152,14 @@ void imp_rec(BT *a, int andar){
       for(j=0; j<=andar; j++) printf("\t");
       printf("Active: %d\n", a->active[i]);
 
+
       for(j=0; j<=andar; j++) printf("\t");
-      if(!a->slans[i]) continue;
-      printf("Slams: %d, %d, %d, %d\n",
-             a->slans[i]->info[0],
-             a->slans[i]->info[1],
-             a->slans[i]->info[2],
-             a->slans[i]->info[3]);
+      if(!a->slans[i]){
+        printf("Filho %d nao tem slams\n", i);
+        continue;
+      }
+      TLSE_imprime_ident(a->slans[i], andar);
+
     }
     imp_rec(a->filho[i],andar+1);
   }
@@ -165,27 +172,110 @@ void BT_Imprime(BT *a){
 
 
 void BT_Imprime_el(BT *a, char* nome){
-    BT* no = BT_Busca_Nome(a, nome);
+    int pos = 0;
+    BT* no = BT_Busca_Nome(a, nome, &pos);
 
     if(!no){
         printf("no Nao encontrado");
         return;
     }
-    for(int i = 0; i < no->nchaves; i++){
-        if (strcmp(no->chave[i], nome) != 0) continue;
+    //for(int i = 0; i < no->nchaves; i++){
+    //    if (strcmp(no->chave[i], nome) != 0) continue;
         printf("\n");
+        printf("Nome: %s\n", no->chave[pos]);
 
-        printf("Nome: %s\n", no->chave[i]);
+        printf("Active: %d\n", no->active[pos]);
 
-        printf("Active: %d\n", no->active[i]);
 
-        if(!a->slans[i]) continue;
-          printf("Slams: %d, %d, %d, %d\n",
-                 a->slans[i]->info[0],
-                 a->slans[i]->info[1],
-                 a->slans[i]->info[2],
-                 a->slans[i]->info[3]);
+        if(!no->slans[pos]){
+            printf("Filho %d nao tem slams\n", pos);
+            return;
+        }
+        TLSE_imprime(no->slans[pos]);
 
+    //}
+
+}
+BT* BT_Preenche_Slam(BT* T, char** line, int t)
+
+{
+    //preparando as variaves
+    int ano = atoi(line[0]);
+    char* win = line[2];
+    char* vice = line[3];
+    strtok(vice, "\n");
+
+    int posW = -1;
+    int posV = -1;
+
+    //criando os nos se eles nao existirem
+    BT* noWin = BT_Busca_Nome(T, win, &posW);
+    if(!noWin){
+        T = BT_Insere(T, win, t);
     }
 
+    BT* noVice = BT_Busca_Nome(T, vice, &posV);
+    if(!noVice){
+        T = BT_Insere(T, vice, t);
+    }
+
+
+    if(!noWin){
+        noWin = BT_Busca_Nome(T, win, &posW);
+    }
+    if(!noVice){
+        noVice = BT_Busca_Nome(T, vice, &posV);
+    }
+
+    //BT_Imprime(T);
+    //ln();
+    if(posW == -1){
+        printf("Algo deu errado com o nome do vencedor\n");
+        return NULL;
+    }
+
+    if(posV == -1){
+        printf("Algo deu errado com o nome do vice\n");
+        return NULL;
+    }
+
+    int camp = 0;
+    switch (line[1][0]){
+    case 'U': camp = 0;  break;
+    case 'W': camp = 1;  break;
+    case 'F': camp = 2;  break;
+    case 'A': camp = 3;  break;
+    default: camp = -1; break;
+    }
+    if(camp == -1){
+        printf("Nome passado para campeonato nao valido: %s\n", line[1]);
+        return NULL;
+    }
+
+    //preencendo a informação do slam
+    TLSE* liW = TLSE_busca(noWin->slans[posW], ano);
+    TLSE* liV = TLSE_busca(noVice->slans[posV], ano);
+    if(!liW){
+        liW = TLSE_insere(noWin->slans[posW], ano);
+    }
+    if(!liV){
+        liV = TLSE_insere(noVice->slans[posV], ano);
+    }
+
+    liW->info[camp] = 1;
+    liV->info[camp] = 2;
+
+    noWin->slans[posW] = liW;
+    noVice->slans[posV] = liV;
+
+
+    /*if(BT_Busca_Nome(T, "Alex Corretja", NULL)){
+        BT_Imprime_el(T, "Alex Corretja");
+        if(strcmp("Alex Corretja", vice)== 0)
+            TLSE_imprime(liV);
+        if(strcmp("Alex Corretja", win)== 0)
+            TLSE_imprime(liW);
+    }*/
+
+    return T;
 }

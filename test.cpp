@@ -9,6 +9,7 @@ void testeBTreeInset(){
     BT* tree = BT_Inicializa();
 
     tree = BT_Insere(tree, "Joao", 2);
+    tree = BT_Insere(tree, "Amanda", 2);
     tree = BT_Insere(tree, "Felipe", 2);
     tree = BT_Insere(tree, "Camila", 2);
     tree = BT_Insere(tree, "Clay", 2);
@@ -19,7 +20,7 @@ void testeBTreeInset(){
 
     BT_Imprime(tree);
     ln();
-    BT_Imprime_el(tree, "Kastrel");
+    BT_Imprime_el(tree, "Clay");
 
     //Menu();
     BT_Libera(tree);
