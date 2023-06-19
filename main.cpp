@@ -16,11 +16,11 @@ int main()
     FILE* fiJogs = fopen("jog_atuais.txt", "r");
     FILE* fiSlans = fopen("era_aberta_grand_slams.txt", "r");
     if (fiJogs == NULL) {
-        printf("Failed to open the file.\n");
+        printf("Failed to open the file atuais.\n");
         exit(1);
     }
     if (fiSlans == NULL) {
-        printf("Failed to open the file.\n");
+        printf("Failed to open the file slam.\n");
         exit(1);
     }
     char line[100];
