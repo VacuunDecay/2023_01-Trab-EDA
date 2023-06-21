@@ -172,7 +172,8 @@ void imp_rec(BT *a, int andar){
             printf("Jogador nao tem slans\n");
             continue;
       }
-      TLSE_imprime_ident(a->slans[i], andar);
+      printf("Slans: %d\n", a->slans[i]);
+      //TLSE_imprime_ident(a->slans[i], andar);
 
     }
     imp_rec(a->filho[i],andar+1);
@@ -194,21 +195,28 @@ void BT_Imprime_el(BT *a, char* nome){
         printf("no Nao encontrado");
         return;
     }
-    //for(int i = 0; i < no->nchaves; i++){
-    //    if (strcmp(no->chave[i], nome) != 0) continue;
-        printf("\n");
-        printf("Nome: %s\n", no->chave[pos]);
 
-        printf("Active: %d\n", no->active[pos]);
+    printf("\n");
+    printf("Nome: %s\n", no->chave[pos]);
 
+    if(!no->active){
+        printf("Active: Nao\n");
+    }else{
+        printf("Active: Sim\n");
+        printf("   pais: %s\n", no->active[pos]->nasc);
+        printf("   pontos: %d\n", no->active[pos]->point);
+        printf("   rank: %d\n", no->active[pos]->rancking);
+        printf("   idade: %d\n", no->active[pos]->idade);
+    }
 
-        if(!no->slans[pos]){
-            printf("Jogador nao tem slans\n");
-            return;
-        }
+    if(!no->slans[pos]){
+        printf("Slans: Nao\n");
+        return;
+    }else{
+        printf("Slans: Sim\n");
         TLSE_imprime(no->slans[pos]);
+    }
 
-    //}
 
 }
 BT* BT_Preenche_Slam(BT* T, char** line, int t)
@@ -282,6 +290,43 @@ BT* BT_Preenche_Slam(BT* T, char** line, int t)
     noWin->slans[posW] = liW;
     noVice->slans[posV] = liV;
 
+
+    return T;
+}
+
+BT* BT_Preenche_Act(BT* T, char** line, int t){
+    int ranking = atoi(line[0]);
+    char* pais = line[1];
+    char* nome = (char*)malloc(sizeof(char)*(strlen(line[2])+1));
+    nome = line[2];
+    int point = atoi(line[3]);
+    int idade = atoi(line[4]);
+
+    int pos = -1;
+
+    BT* no = BT_Busca_Nome(T, nome, &pos);
+    if(!no){
+        T = BT_Insere(T, nome, t);
+    }
+
+
+    if(!no){
+        no = BT_Busca_Nome(T, nome, &pos);
+    }
+
+    if(pos == -1){
+        printf("Algo deu errado com o nome do jogador\n");
+        return NULL;
+    }
+
+    Act* ac = ac =(Act*)malloc(sizeof(Act));
+
+    ac->idade = idade;
+    ac->nasc = pais;
+    ac->point = point;
+    ac->rancking = ranking;
+
+    no->active[pos] = ac;
 
     return T;
 }

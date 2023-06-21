@@ -25,7 +25,7 @@ int main()
     }
     char line[100];
     while (fgets(line, sizeof(line), fiSlans) != NULL) {
-        int numTokens = 5;
+        int numTokens = 4;
         char** tokens = splitStr(line, "\t", numTokens);
 
         bt = BT_Preenche_Slam(bt, tokens, t);
@@ -35,9 +35,24 @@ int main()
         free(tokens);
     }
 
-    BT_Imprime(bt);
+    while (fgets(line, sizeof(line), fiJogs) != NULL) {
+        int numTokens = 5;
+        char** tokens = splitStr(line, "\t", numTokens);
+
+        bt = BT_Preenche_Act(bt, tokens, t);
+
+
+
+        free(tokens);
+    }
+
+    //BT_Imprime(bt);
     ln();
-    BT_Imprime_el(bt, "Alex Corretja");
+    BT_Imprime_el(bt, "Carlos Alcaraz");
+    BT_Imprime_el(bt, "Daniil Medvedev");
+    BT_Imprime_el(bt, "Novak Djokovic");
+    BT_Imprime_el(bt, "Jenson Brooksby");
+    BT_Imprime_el(bt, "Dominic Thiem");
 
 
     BT_Libera(bt);
