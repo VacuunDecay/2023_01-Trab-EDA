@@ -1,5 +1,5 @@
 #include "BTree.h"
-
+#include "MyUtil.h"
 
 
 BT *BT_Inicializa(){
@@ -66,13 +66,18 @@ BT *BT_Busca_Nome(BT* x, char* nome, int* pos){
 BT *BT_Busca_Pais(BT* x, char* pais){
 
 }
-
+/**x = pai, y = no*/
 BT *Divisao(BT *x, int i, BT* y, int t){
   BT *z=BT_Cria(t);
   z->nchaves= t - 1;
   z->folha = y->folha;
   int j;
-  for(j=0;j<t-1;j++) z->chave[j] = y->chave[j+t];
+  for(j=0;j<t-1;j++) {
+        z->chave[j] = y->chave[j+t];
+        z->slans[j] = y->slans[j+t];
+        z->active[j] = y->active[j+t];
+
+  }
   if(!y->folha){
     for(j=0;j<t;j++){
       z->filho[j] = y->filho[j+t];
@@ -82,8 +87,14 @@ BT *Divisao(BT *x, int i, BT* y, int t){
   y->nchaves = t-1;
   for(j=x->nchaves; j>=i; j--) x->filho[j+1]=x->filho[j];
   x->filho[i] = z;
-  for(j=x->nchaves; j>=i; j--) x->chave[j] = x->chave[j-1];
+  for(j=x->nchaves; j>=i; j--) {
+    x->chave[j] = x->chave[j-1];
+    x->slans[j] = x->slans[j-1];
+    x->active[j] = x->active[j-1];
+  }
   x->chave[i-1] = y->chave[t-1];
+  x->slans[i-1] = y->slans[t-1];
+  x->active[i-1] = y->active[t-1];
   x->nchaves++;
   return x;
 }
@@ -92,12 +103,15 @@ BT *Insere_Nao_Completo(BT *x, char* k, int t) {
     int i = x->nchaves - 1;
     if (x->folha) {
         while ((i >= 0) && (strcmp(k, x->chave[i]) < 0)) {
-            char* aux2 = x->chave[i+1];
-            char* aux1 = x->chave[i];
+            char* aux2 = x->chave[i+1];//?
+            char* aux1 = x->chave[i];//?
             x->chave[i+1] = x->chave[i];
+            x->slans[i+1] = x->slans[i];
+            x->active[i+1] = x->active[i];
             i--;
         }
         x->chave[i+1] = k;
+        //slans e active?
         x->nchaves++;
         return x;
     }
@@ -155,8 +169,8 @@ void imp_rec(BT *a, int andar){
 
       for(j=0; j<=andar; j++) printf("\t");
       if(!a->slans[i]){
-        printf("Filho %d nao tem slams\n", i);
-        continue;
+            printf("Jogador nao tem slans\n");
+            continue;
       }
       TLSE_imprime_ident(a->slans[i], andar);
 
@@ -167,7 +181,8 @@ void imp_rec(BT *a, int andar){
 
 
 void BT_Imprime(BT *a){
-  imp_rec(a, 0);
+    cls();
+    imp_rec(a, 0);
 }
 
 
@@ -188,7 +203,7 @@ void BT_Imprime_el(BT *a, char* nome){
 
 
         if(!no->slans[pos]){
-            printf("Filho %d nao tem slams\n", pos);
+            printf("Jogador nao tem slans\n");
             return;
         }
         TLSE_imprime(no->slans[pos]);
@@ -199,12 +214,13 @@ void BT_Imprime_el(BT *a, char* nome){
 BT* BT_Preenche_Slam(BT* T, char** line, int t)
 
 {
-    //preparando as variaves
+    //estrae de char os valores do campo
     int ano = atoi(line[0]);
     char* win = line[2];
     char* vice = line[3];
     strtok(vice, "\n");
 
+    //posicoes dos jogadores dentro do no
     int posW = -1;
     int posV = -1;
 
@@ -227,8 +243,6 @@ BT* BT_Preenche_Slam(BT* T, char** line, int t)
         noVice = BT_Busca_Nome(T, vice, &posV);
     }
 
-    //BT_Imprime(T);
-    //ln();
     if(posW == -1){
         printf("Algo deu errado com o nome do vencedor\n");
         return NULL;
@@ -252,7 +266,7 @@ BT* BT_Preenche_Slam(BT* T, char** line, int t)
         return NULL;
     }
 
-    //preencendo a informação do slam
+    //preencendo a informaï¿½ï¿½o do slam
     TLSE* liW = TLSE_busca(noWin->slans[posW], ano);
     TLSE* liV = TLSE_busca(noVice->slans[posV], ano);
     if(!liW){
@@ -268,14 +282,6 @@ BT* BT_Preenche_Slam(BT* T, char** line, int t)
     noWin->slans[posW] = liW;
     noVice->slans[posV] = liV;
 
-
-    /*if(BT_Busca_Nome(T, "Alex Corretja", NULL)){
-        BT_Imprime_el(T, "Alex Corretja");
-        if(strcmp("Alex Corretja", vice)== 0)
-            TLSE_imprime(liV);
-        if(strcmp("Alex Corretja", win)== 0)
-            TLSE_imprime(liW);
-    }*/
 
     return T;
 }

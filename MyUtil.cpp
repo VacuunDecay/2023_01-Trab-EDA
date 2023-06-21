@@ -29,3 +29,13 @@ char** splitStr(char* line, char* key, int numCol){
 
     return cols;
 }
+
+void cls() {
+    #ifdef _WIN32
+        // For Windows
+        system("cls");
+    #else
+        // For UNIX-based systems (Linux, macOS, etc.)
+        system("clear");
+    #endif
+}

@@ -16,4 +16,6 @@ int strToInt(char* num);
 char** splitStr(char* line, char* key, int numCol);
 /**Quebra uma linha no terminal*/
 void ln();
+/**Limpa a tela do terminal*/
+void cls();
 #endif  // MYUTIL_H

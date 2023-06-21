@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1687136614 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
+1687136766 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
 	<stdio.h>
 	<stdlib.h>
 	"test.h"
@@ -37,8 +37,9 @@
 	<stdio.h>
 	<stdlib.h>
 
-1687136051 source:c:\users\catreco\documents\github\2023_01-trab-eda\btree.cpp
+1687307638 source:c:\users\catreco\documents\github\2023_01-trab-eda\btree.cpp
 	"BTree.h"
+	"MyUtil.h"
 
 1687136192 c:\users\catreco\documents\github\2023_01-trab-eda\btree.h
 	"TLSE.h"
@@ -53,9 +54,9 @@
 1687129581 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlse.cpp
 	"TLSE.h"
 
-1687041573 c:\users\catreco\documents\github\2023_01-trab-eda\myutil.h
+1687304932 c:\users\catreco\documents\github\2023_01-trab-eda\myutil.h
 
-1687041352 source:c:\users\catreco\documents\github\2023_01-trab-eda\myutil.cpp
+1687304856 source:c:\users\catreco\documents\github\2023_01-trab-eda\myutil.cpp
 	"MyUtil.h"
 	<stdio.h>
 	<stdlib.h>
