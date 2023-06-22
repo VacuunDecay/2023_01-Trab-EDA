@@ -330,3 +330,41 @@ BT* BT_Preenche_Act(BT* T, char** line, int t){
 
     return T;
 }
+
+BT* BT_preench_arvore(BT* bt, int t){
+    FILE* fiJogs = fopen("jog_atuais.txt", "r");
+    FILE* fiSlans = fopen("era_aberta_grand_slams.txt", "r");
+    if (fiJogs == NULL) {
+        printf("Failed to open the file atuais.\n");
+        exit(1);
+    }
+    if (fiSlans == NULL) {
+        printf("Failed to open the file slam.\n");
+        exit(1);
+    }
+    char line[100];
+    while (fgets(line, sizeof(line), fiSlans) != NULL) {
+        int numTokens = 4;
+        char** tokens = splitStr(line, "\t", numTokens);
+
+        bt = BT_Preenche_Slam(bt, tokens, t);
+
+
+
+        free(tokens);
+    }
+
+    while (fgets(line, sizeof(line), fiJogs) != NULL) {
+        int numTokens = 5;
+        char** tokens = splitStr(line, "\t", numTokens);
+
+        bt = BT_Preenche_Act(bt, tokens, t);
+
+
+
+        free(tokens);
+    }
+    fclose(fiJogs);
+    fclose(fiSlans);
+    return bt;
+};
