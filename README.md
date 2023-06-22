@@ -14,24 +14,22 @@
 
 ### ToDo
 - Estrutura da BTree 
-  - Busca por nome
   - Remove
   - Libera
 - Preencimento de dados
-  - BT* BT_Insere_slam(BT* T, int ano, char* camp, char* win, char* vice);
-  - BT* BT_Insere_ativo(BT* T, int rank, char* pais, char* nome, int point, int idade);
+
 - Coleta de dados
-  - char** get_slam_line(FILE* fp);
-  - char** get_ativo_line(FILE* fp);
+- char** get_slam_line(FILE* fp);
+- char** get_ativo_line(FILE* fp);
 - Funções auxiliares
-  - int strToInt(char* num);
-  - char** strSplit(char* line, char key);
+
 
 OBS.: sintam-se livres pra mudar a chamadas das funções por enquanto
 ### Fazendo
 - [seu nome] - [Descrição ou nome da tarefa]
 ### Feito
 - [seu nome] - [Descrição ou nome da tarefa]
-
-
-
+- Busca por nome
+- BT* BT_Insere_slam(BT* T, int ano, char* camp, char* win, char* vice);
+- BT* BT_Insere_ativo(BT* T, int rank, char* pais, char* nome, int point, int idade);
+- char** strSplit(char* line, char key);
