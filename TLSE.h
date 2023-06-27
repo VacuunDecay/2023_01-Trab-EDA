@@ -12,9 +12,9 @@ typedef struct lse{
   int *info; // [FR, AU, US, WI] 0 = lost, 1 = finalist, 2 = winner
   struct lse *prox;
 } TLSE;
-/**title precisa de um vetor de tamanho 4 alocado dinamicamente. ano é usado como chave*/
+/**title precisa de um vetor de tamanho 4 alocado dinamicamente. ano ï¿½ usado como chave*/
 TLSE* TLSE_insere(TLSE *l, int ano);
-TLSE* TLSE_insere(TLSE *l, int* title, int ano);
+TLSE* TLSE_insere_t(TLSE *l, int* title, int ano);
 
 void TLSE_imprime(TLSE *l);
 void TLSE_imprime_ident(TLSE *l, int andar);

@@ -49,7 +49,7 @@ int testeLista(){
     TLSE *lista = NULL;
 
     for(int i=0; i<5; i++)
-        lista = TLSE_insere(lista, vet[i], 2000+i);
+        lista = TLSE_insere_t(lista, vet[i], 2000+i);
 
     TLSE_retira(lista, 2001);
     TLSE_imprime(lista);

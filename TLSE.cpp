@@ -12,7 +12,7 @@ TLSE* TLSE_insere(TLSE *l, int ano){
   return novo;
 }
 
-TLSE* TLSE_insere(TLSE *l,int* title, int ano){
+TLSE* TLSE_insere_t(TLSE *l,int* title, int ano){
   //OBS: title precisa ser alocado dinamicamente previamente
   TLSE *novo = (TLSE *) malloc(sizeof(TLSE));
   novo->prox = l;
