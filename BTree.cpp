@@ -390,7 +390,7 @@ BT* remover(BT* arv,char *nome,int t){
         printf("\nCASO 2A\n");
         BT *y = arv->filho[i];
         while(!y->folha)y=y->filho[y->nchaves];
-        char *temp;
+        char *temp = (char*)malloc(sizeof(char)*50);
         TLSE *l=y->slans[y->nchaves-1];
         Act *a=y->active[y->nchaves-1];
         strcpy(temp,y->chave[y->nchaves-1]);
@@ -404,7 +404,7 @@ BT* remover(BT* arv,char *nome,int t){
         printf("\n CASO 2B\n");
         BT *y =arv->filho[i+1];
         while(!y->folha)y=y->filho[0];
-        char *temp;
+        char *temp = (char*)malloc(sizeof(char)*50);
         strcpy(temp,y->chave[0]);
         TLSE *l=y->slans[0];
         Act *a=y->active[0];
@@ -412,6 +412,7 @@ BT* remover(BT* arv,char *nome,int t){
         strcpy(arv->chave[i],temp);
         arv->slans[i]=l;
         arv->active[i]=a;
+        free(temp);
         return arv;
     }
     if(!arv->folha && arv->filho[i+1]->nchaves == t-1 && arv->filho[i]->nchaves == t-1){//CASO 2C verificar os outros atributos

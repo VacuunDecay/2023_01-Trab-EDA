@@ -18,7 +18,12 @@ int main()
 
     BT_Imprime(bt);
     ln();
-    BT_Imprime_el(bt, "Carlos Alcaraz");
+    BT_Retira(bt, "Daniil Medvedev", 5);
+    BT_Retira(bt, "Carlos Alcaraz", 5);
+    BT_Retira(bt, "Novak Djokovic", 5);
+    BT_Retira(bt, "Novak Djokovic", 5);
+    BT_Retira(bt, "Jenson Brooksby", 5);
+    BT_Retira(bt, "Dominic Thiem", 5);
     BT_Imprime_el(bt, "Daniil Medvedev");
     BT_Imprime_el(bt, "Novak Djokovic");
     BT_Imprime_el(bt, "Jenson Brooksby");

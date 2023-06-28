@@ -2,7 +2,7 @@
 #include "MyUtil.h"
 #include "BTree.h"
 #include "TLSE.h"
-#include "TLSEno.h"
+//#include "TLSEno.h"
 
 /**Nao implementada*/
 void exer_1 (){

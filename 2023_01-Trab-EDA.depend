@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1687432308 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
+1687985399 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
 	<stdio.h>
 	<stdlib.h>
 	"test.h"
@@ -21,7 +21,7 @@
 1602082981 source:c:\users\catreco\documents\github\2023_01-trab-eda\tarvb.cpp
 	"TARVB.h"
 
-1687124471 source:c:\users\catreco\documents\github\2023_01-trab-eda\test.cpp
+1687825730 source:c:\users\catreco\documents\github\2023_01-trab-eda\test.cpp
 	"TARVB.h"
 	"test.h"
 	"TLSE.h"
@@ -37,11 +37,11 @@
 	<stdio.h>
 	<stdlib.h>
 
-1687432306 source:c:\users\catreco\documents\github\2023_01-trab-eda\btree.cpp
+1687985301 source:c:\users\catreco\documents\github\2023_01-trab-eda\btree.cpp
 	"BTree.h"
 	"MyUtil.h"
 
-1687432305 c:\users\catreco\documents\github\2023_01-trab-eda\btree.h
+1687981689 c:\users\catreco\documents\github\2023_01-trab-eda\btree.h
 	"TLSE.h"
 	<stdio.h>
 	<stdlib.h>
@@ -51,7 +51,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1687129581 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlse.cpp
+1687825726 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlse.cpp
 	"TLSE.h"
 
 1687304932 c:\users\catreco\documents\github\2023_01-trab-eda\myutil.h
@@ -62,9 +62,11 @@
 	<stdlib.h>
 	<string.h>
 
-1687432577 source:c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.cpp
+1687981882 source:c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.cpp
 	"exercicios.h"
 	"MyUtil.h"
+	"BTree.h"
+	"TLSE.h"
 
 1687461441 c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.h
 
