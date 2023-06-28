@@ -13,7 +13,7 @@ BT *BT_Cria(int t){
     novo->filho = (BT**)malloc(sizeof(BT*)*t*2);
     novo->chave =(char**)malloc(sizeof(char*)*((t*2)-1));
     novo->slans = (TLSE**)malloc(sizeof(TLSE*)*((t*2)-1));
-    novo->active = (Active**)malloc(sizeof(Active*)*((t*2)-1));
+    novo->active = (Act**)malloc(sizeof(Act*)*((t*2)-1));
     int i;
     for(i = 0; i < (t*2); i++) novo->filho[i] = NULL;
     for (i = 0; i < ((2 * t) - 1); i++) {
