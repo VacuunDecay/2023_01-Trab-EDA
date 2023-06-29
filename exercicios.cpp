@@ -37,7 +37,7 @@ int Qe (BT * a, int av){
             p = p->prox;
           }
         }
-        //alguem_venceu = Qe(a->filho, alguem_venceu);
+        alguem_venceu = Qe(a->filho[i], alguem_venceu);
       }
     }
     return alguem_venceu;
@@ -63,7 +63,7 @@ int Qf(BT * a, int av){
           p = p->prox;
         }
       }
-      //alguem_venceu = Qf(a->filho, alguem_venceu);
+      alguem_venceu = Qf(a->filho[i], alguem_venceu);
     }
   }
   return alguem_venceu;
