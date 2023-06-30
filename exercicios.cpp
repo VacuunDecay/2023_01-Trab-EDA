@@ -21,7 +21,7 @@ void aux_exercicioB(BT *a,BT *b){
                 int year = 2023-(a->active[i]->idade);
                 TLSE *l=b->slans[j];
                 while(l){
-                    if(l->ano==year)printf("\nJogador %c ganhou no ano %d que nasceu %c.\n",b->chave[j],year,a->chave[i]);
+                    if(l->ano==year)printf("\nJogador %s ganhou no ano %d que nasceu %s.\n",b->chave[j],year,a->chave[i]);
                     l=l->prox;
                 }
             }
