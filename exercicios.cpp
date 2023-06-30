@@ -21,7 +21,7 @@ void aux_exercicioB(BT *a,BT *b){
                 int year = 2023-(a->active[i]->idade);
                 TLSE *l=b->slans[j];
                 while(l){
-                    if(l->ano==year)printf("\nJogador %s ganhou no ano %d que nasceu %s.\n",b->chave[j],year,a->chave[i]);
+                    if(l->ano==year&&(l->info[0)==1)printf("\nJogador %s ganhou no ano %d que nasceu %s.\n",b->chave[j],year,a->chave[i]);
                     l=l->prox;
                 }
             }
@@ -93,7 +93,16 @@ void exer_6 (BT * bt){
 }
 
 /**Nao implementada*/
-void exer_7 (){
-
+BT* exercicioG(BT *a,char *c){
+    if(!a)return;
+    int t=(sizeof(a->nchaves)/sizeof(a->chave[0]));//testar para saber de funciona com vetor de char P.S:funciona com vetor de int
+    for(int i=0;i<a->nchaves;i++){
+        if(a->active[i]){
+            if(strcmp(a->active[i]->nasc,c)==0)a=BT_Retira(a,a->chave[i],t);//se o jogador for ativo e a nacionalidade for igual a digitada remove
+            i=0;//repassa a arvore para evitar que haja qualquer jogador de tal nacionalidade que tenha sido movido por alguma rotação
+        }
+    }
+    for(int i=0;i<a->nchaves;i++)a->filho[i]=exercicioG(a->filho[i],c);
+    return a;
 }
 
