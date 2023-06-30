@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1688082873 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
+1688086739 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
 	<stdio.h>
 	<stdlib.h>
 	"test.h"
