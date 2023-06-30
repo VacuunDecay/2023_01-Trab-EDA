@@ -28,7 +28,9 @@ int main()
     BT_Imprime_el(bt, "Dominic Thiem");
 
 
+    BT_Imprime(bt);
     BT_Libera(bt);
+
 
     return 0;
 }
