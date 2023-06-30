@@ -8,10 +8,29 @@
 void exer_1 (){
 
 }
-/**Nao implementada*/
-void exer_2 (){
-
+/*Nao testada*/
+void exercicioB(BT *a){
+    if(!a)return;
+    aux_exercicioB(a,a);
 }
+void aux_exercicioB(BT *a,BT *b){
+    if(!a||!b)return;
+    for(int i=0;i<a->nchaves;i++){
+        for(int j=0;j<b->nchaves;j++){
+            if((a->active[i])&&(b->active[j])&&(strcmp(a->active[i]->nasc,b->active[j]->nasc)==0)){
+                int year = 2023-(a->active[i]->idade);
+                TLSE *l=b->slans[j];
+                while(l){
+                    if(l->ano==year)printf("\nJogador %c ganhou no ano %d que nasceu %c.\n",b->chave[j],year,a->chave[i]);
+                    l=l->prox;
+                }
+            }
+        }
+    }
+    for(int j=0;j<b->nchaves+1;j++)aux_exercicioB(a,b->filho[j]);
+    for(int i=0;i<a->nchaves+1;i++)aux_exercicioB(a->filho[i],b);
+}
+
 /**Nao implementada*/
 void exer_3 (){
 
