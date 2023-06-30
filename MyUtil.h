@@ -1,9 +1,9 @@
 #ifndef MYUTIL_H
 #define MYUTIL_H
 /*
-Biblioteca para funçoes aleatorias e uteis
+Biblioteca para funÃ§oes aleatorias e uteis
 que certamente existem em alguma outra biblioteca
-mas é mais facil fazer a propria
+mas Ã© mais facil fazer a propria
 */
 
 /**@brief Espera o usuario apertar uma tecla*/
@@ -18,4 +18,6 @@ char** splitStr(char* line, char* key, int numCol);
 void ln();
 /**Limpa a tela do terminal*/
 void cls();
+
+char* country(char *a);//Retorna o pais entre colchetes RUSSIA -> [RUSSIA];
 #endif  // MYUTIL_H
