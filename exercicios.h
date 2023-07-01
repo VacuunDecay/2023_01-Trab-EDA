@@ -33,16 +33,16 @@ ranking, levando-se em consideração somente os grand slams?
 (e) se existe algum jogador aposentado que ganhou todos os grand slams no mesmo ano? Se
 sim, retornar o(s) nome(s) do(s) jogador(es) e o(s) ano(s).
 */
-int Qe (BT * a, int av);
+TLSEp* Qe (BT * a, TLSEp* l, int av);
 /*
 (f) se existe algum jogador em atividade que ganhou todos os grand slams no mesmo ano? Se
 sim, retornar o(s) nome(s) do(s) jogador(es) e o(s) ano(s).
 */
-int Qf(BT * a, int av);
+TLSEp* Qf (BT * a, TLSEp* l, int av);
 /*
 (g) retirar todos os jogadores em atividade de um determinado país.
 */
-
+BT* retiraPais(BT *a,char *c);
 
 
 

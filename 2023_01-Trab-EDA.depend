@@ -15,10 +15,10 @@
 
 1688216045 c:\users\catreco\documents\github\2023_01-trab-eda\myutil.h
 
-1688230298 source:c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.cpp
+1688235927 source:c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.cpp
 	"exercicios.h"
 
-1688229574 c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.h
+1688235797 c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.h
 	"MyUtil.h"
 	"BTree.h"
 	"TLSEplayer.h"
@@ -43,7 +43,7 @@
 	"exercicios.h"
 	"BTree.h"
 
-1688230535 source:c:\users\catreco\documents\github\2023_01-trab-eda\menus.cpp
+1688235878 source:c:\users\catreco\documents\github\2023_01-trab-eda\menus.cpp
 	"Menus.h"
 	"test.h"
 
@@ -71,10 +71,10 @@
 1688214340 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlse.cpp
 	"TLSE.h"
 
-1688224013 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlseplayer.cpp
+1688233971 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlseplayer.cpp
 	"TLSEplayer.h"
 
-1688216251 c:\users\catreco\documents\github\2023_01-trab-eda\tlseplayer.h
+1688231557 c:\users\catreco\documents\github\2023_01-trab-eda\tlseplayer.h
 	"BTree.h"
 	"MyUtil.h"
 

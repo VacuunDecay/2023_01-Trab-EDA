@@ -2,14 +2,13 @@
 
 
 
-PL* PL_criaPL(BT* b, char* nome){
-  int pos = 0;
+PL* PL_criaPL(BT* b, int ind){
 
   PL* novo = (PL*)malloc(sizeof(PL));
 
-  novo->nome = nome;
-  novo->no = BT_Busca_Nome(b, nome, &pos);
-  novo->indice = pos;
+  novo->nome = b->chave[ind];
+  novo->no = b;
+  novo->indice = ind;
 
   return novo;
 }
@@ -26,7 +25,7 @@ TLSEp* TLSEp_insere(TLSEp *l, int point, PL* p){
     return l;
   }
 
-  printf("inserindo: %s\n", novo->info->nome);
+  //printf("inserindo: %s\n", novo->info->nome);
 
   if (l == NULL || point > l->point) {
     novo->prox = l;

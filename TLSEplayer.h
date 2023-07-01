@@ -17,7 +17,7 @@ typedef struct lsee{
   struct lsee *prox;
 } TLSEp;
 
-PL* PL_criaPL(BT* b, char* nome);
+PL* PL_criaPL(BT* b, int ind);
 
 TLSEp* TLSEp_insere(TLSEp *l, int point, PL* p);
 

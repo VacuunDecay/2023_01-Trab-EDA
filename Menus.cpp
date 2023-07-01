@@ -16,13 +16,43 @@ void exercicoD(BT* bt){
     makeSlanHank(bt, 1);
 }
 void exercicoE(BT* bt){
-  if(Qe(bt, 0) == 0)printf("Nenhum jogador aposentado venceu todos os slans no mesmo ano.\n");
+  TLSEp* lista = NULL;
+  lista = Qe(bt, lista, 0);
+
+  TLSEp* no = lista;
+  if(lista)
+    while(no){
+      printf("%s venceu todos os slans no ano %d\n", no->info->no->chave[no->info->indice], no->point);
+      no = no->prox;
+    }
+  else
+    printf("Nenhum jogador aposentado venceu todos os slans no mesmo ano.\n");
+
+
 }
 void exercicoF(BT* bt){
-  if(Qf(bt, 0) == 0)printf("Nenhum jogador ativo venceu todos os slans no mesmo ano.\n");
-}
-void exercicoG(){
+  TLSEp* lista = NULL;
+  lista = Qf(bt, lista, 0);
 
+  TLSEp* no = lista;
+  if(lista)
+    while(no){
+      printf("%s venceu todos os slans no ano %d\n", no->info->no->chave[no->info->indice], no->point);
+      no = no->prox;
+    }
+  else
+    printf("Nenhum jogador aposentado venceu todos os slans no mesmo ano.\n");
+
+
+}
+void exercicoG(BT* bt){
+    char pais[50];
+    printf("Digite um pais:");
+    scanf("%s", &pais);
+
+    printf("Removendo os jogadores vindos de %s", pais);
+    bt = retiraPais(bt, pais);
+    BT_Imprime(bt);
 }
 void MenuDeTestes(){
 
@@ -55,7 +85,7 @@ int Menu(BT* bt, int t){
             case 4: exercicoD(bt); break;
             case 5: exercicoE(bt); break;
             case 6: exercicoF(bt); break;
-            case 7: exercicoG(); break;
+            case 7: exercicoG(bt); break;
             case 9:
                 cls();
                 printf("Exiting the program...\n");
