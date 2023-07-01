@@ -4,8 +4,8 @@
 void exercicoA(){
 
 }
-void exercicoB(){
-
+void exercicoB(BT* bt){
+  nascmentoPremi(bt);
 }
 void exercicoC(BT* bt){
     printf("-------------inativos--------------:\n");
@@ -80,7 +80,7 @@ int Menu(BT* bt, int t){
 
         switch (choice) {
             case 1: exercicoA(); break;
-            case 2: exercicoB(); break;
+            case 2: exercicoB(bt); break;
             case 3: exercicoC(bt); break;
             case 4: exercicoD(bt); break;
             case 5: exercicoE(bt); break;

@@ -17,7 +17,7 @@ slam).
 (b) se existem jogadores que nasceram no mesmo ano que seu compatriota (que possui um
 ranking) ganhou o primeiro grand slam?
 */
-
+void nascmentoPremi(BT *a);
 /*
 (c) se ninguém tivesse se aposentado ainda, qual seria a pontuação acumulada de cada um dos
 aposentados, levando-se em consideração que se o jogador ganha o torneio, ele tem 2000

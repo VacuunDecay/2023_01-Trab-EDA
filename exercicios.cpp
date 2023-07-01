@@ -1,23 +1,15 @@
 #include "exercicios.h"
 
 //#include "TLSEno.h"
-
-
-/*Nao testada*/
-void exercicioB(BT *a){
-    if(!a)return;
-//    aux_exercicioB(a,a);
-}
-
-void aux_exercicioB(BT *a,BT *b){
+void aux_exercicioB(BT* a,BT* b){
     if(!a||!b)return;
     for(int i=0;i<a->nchaves;i++){
         for(int j=0;j<b->nchaves;j++){
-            if((a->active[i])&&(b->active[j])&&(strcmp(a->active[i]->nasc,b->active[j]->nasc)==0)){
-                int year = 2023-(a->active[i]->idade);
-                TLSE *l=b->slans[j];
+            if((a->active[i])&&(b->active[j])&&(strcmp(a->active[i]->nasc,b->active[j]->nasc)==0)&&(strcmp(a->chave[i],b->chave[j])!=0)){
+                int year = 2023-(b->active[j]->idade);
+                TLSE *l=a->slans[i];
                 while(l){
-                    if(l->ano==year&&(l->info[0])==1)printf("\nJogador %s ganhou no ano %d que nasceu %s.\n",b->chave[j],year,a->chave[i]);
+                    if((l->ano==year)&&(l->info[0])==1)printf("\nJogador %s ganhou no ano %d que nasceu %s.\n",a->chave[i],year,b->chave[j]);
                     l=l->prox;
                 }
             }
@@ -26,6 +18,14 @@ void aux_exercicioB(BT *a,BT *b){
     for(int j=0;j<b->nchaves+1;j++)aux_exercicioB(a,b->filho[j]);
     for(int i=0;i<a->nchaves+1;i++)aux_exercicioB(a->filho[i],b);
 }
+
+/*Nao testada*/
+void nascmentoPremi(BT *a){
+    if(!a)return;
+    aux_exercicioB(a,a);
+}
+
+
 
 
 /*Exercicios C e D (3 e 4)*/
