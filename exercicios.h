@@ -1,7 +1,10 @@
 #ifndef EXERCICIOS_H
 #define EXERCICIOS_H
 
-
+#include "MyUtil.h"
+#include "BTree.h"
+#include "TLSEplayer.h"
+#include "TLSE.h"
 /*
 (a)
 1.quantos jogadores aposentados possuem títulos?
@@ -20,7 +23,7 @@ ranking) ganhou o primeiro grand slam?
 aposentados, levando-se em consideração que se o jogador ganha o torneio, ele tem 2000
 pontos, e o vice 1200. E a ordenação em ordem decrescente?
 */
-
+void makeSlanHank(BT* a, int isAtivo);
 /*
 (d) qual é a ordenação acumulada em ordem decrescente dos jogadores que possuem um
 ranking, levando-se em consideração somente os grand slams?

@@ -1,7 +1,5 @@
 #include "exercicios.h"
-#include "MyUtil.h"
-#include "BTree.h"
-#include "TLSE.h"
+
 //#include "TLSEno.h"
 
 /**Nao implementada*/
@@ -11,8 +9,9 @@ void exer_1 (){
 /*Nao testada*/
 void exercicioB(BT *a){
     if(!a)return;
-    aux_exercicioB(a,a);
+//    aux_exercicioB(a,a);
 }
+/*
 void aux_exercicioB(BT *a,BT *b){
     if(!a||!b)return;
     for(int i=0;i<a->nchaves;i++){
@@ -30,7 +29,7 @@ void aux_exercicioB(BT *a,BT *b){
     for(int j=0;j<b->nchaves+1;j++)aux_exercicioB(a,b->filho[j]);
     for(int i=0;i<a->nchaves+1;i++)aux_exercicioB(a->filho[i],b);
 }
-
+*/
 /**Nao implementada*/
 void exer_3 (){
 
@@ -92,7 +91,7 @@ void exer_6 (BT * bt){
   if(Qf(bt, 0) == 0)printf("Nenhum jogador ativo venceu todos os slans no mesmo ano.\n");
 }
 
-/**Nao implementada*/
+/**Nao implementada*//*
 BT* exercicioG(BT *a,char *c){
     if(!a)return;
     int t=(sizeof(a->nchaves)/sizeof(a->chave[0]));//testar para saber de funciona com vetor de char P.S:funciona com vetor de int
@@ -104,5 +103,49 @@ BT* exercicioG(BT *a,char *c){
     }
     for(int i=0;i<a->nchaves;i++)a->filho[i]=exercicioG(a->filho[i],c);
     return a;
+}
+*/
+
+
+/*Exercico C e D*/
+int pointCalc(TLSE* s){
+  TLSE* no = s;
+  int points = 0;
+  while(no){
+    for(int i = 0; i < 4; i++){
+      if(no->info[i] == 0) continue;
+      points+= (800*no->info[i])+400;
+    }
+    no = no->prox;
+  }
+  return points;
+
+}
+
+TLSEp* prencheLiastaHank(BT *a, TLSEp* l, int isAtivo){
+  if (a){
+    int i, j;
+    for (i = 0; i <= a->nchaves-1; i++){
+      l = prencheLiastaHank(a->filho[i], l, isAtivo);
+      if((a->active[i] == 0 && isAtivo == 0) || (a->active[i] != 0 && isAtivo != 0)){
+      //if(a->active == 0){
+        if(a->slans != 0){
+          l = TLSEp_insere(l, pointCalc(a->slans[i]), PL_criaPL(a, a->chave[i])); // cria um novo elemento pra l com o calculo da pontuação e um struct com referencias para o no original
+          //TLSEp_imprime(l);
+        }
+      }
+    }
+    l = prencheLiastaHank(a->filho[i], l, isAtivo);
+  }
+  return l;
+}
+
+void makeSlanHank(BT* a, int isAtivo){
+  TLSEp* rankFicticio = NULL;
+
+  rankFicticio =  prencheLiastaHank(a, rankFicticio, isAtivo);
+  printf("inprinminto o novo hank\n");
+  TLSEp_imprime(rankFicticio);
+
 }
 

@@ -39,3 +39,8 @@ void cls() {
         system("clear");
     #endif
 }
+
+
+void printIntvar(int var){
+    printf("%d\n", var);
+}

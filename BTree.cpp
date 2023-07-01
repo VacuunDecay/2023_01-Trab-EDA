@@ -38,14 +38,19 @@ BT *BT_Libera(BT *a){
       for (i = 0; i <= a->nchaves; i++)
         BT_Libera(a->filho[i]);
     }
-    free(a->chave);
-    free(a->filho);
+
     for (int i = 0; i > a->nchaves; i++)
       free(a->active[i]);
-    free(a->active);
-    for (int i = 0; i < a->nchaves; i++)
-      TLSE_libera(a->slans[i]);
+
+    for (int i = 0; i < a->nchaves; i++){
+      //printf("Liberando os slans de: %s\n", a->chave[i]);
+      //TLSE_libera(a->slans[i]);
+    }
+
+    free(a->chave);
+    free(a->filho);
     free(a->slans);
+    free(a->active);
     free(a);
     return NULL;
   }
@@ -385,7 +390,7 @@ BT *remover(BT *arv, char *ch, int t){
     if (!arv->folha && arv->filho[i]->nchaves >= t){ // CASO 2A
       printf("\nCASO 2A\n");
       BT *y = arv->filho[i]; // Encontrar o predecessor k' de k na árvore com raiz em y
-      
+
       while (!y->folha) y = y->filho[y->nchaves];
 
       char *temp = strdup(y->chave[y->nchaves-1]);
@@ -416,7 +421,7 @@ BT *remover(BT *arv, char *ch, int t){
       arv->chave[i] = strdup(temp);
       arv->active[i] = temp_active;
       arv->slans[i] = temp_slans;
-      
+
       return arv;
     }
     if (!arv->folha && arv->filho[i]->nchaves == t-1 && arv->filho[i+1]->nchaves == t-1){ // CASO 2C
@@ -579,8 +584,8 @@ BT *remover(BT *arv, char *ch, int t){
 
         int j;
         for (j = 0; j < t-1; j++){
-          z->chave[t+j] = y->chave[j];  
-          z->slans[t+j] = y->slans[j];  
+          z->chave[t+j] = y->chave[j];
+          z->slans[t+j] = y->slans[j];
           z->active[t+j] = y->active[j];
 
           z->nchaves++;

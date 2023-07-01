@@ -43,6 +43,8 @@
 		<Unit filename="TARVB.h" />
 		<Unit filename="TLSE.cpp" />
 		<Unit filename="TLSE.h" />
+		<Unit filename="TLSEplayer.cpp" />
+		<Unit filename="TLSEplayer.h" />
 		<Unit filename="arquivos/APznzaY3pyB0qjRYcSmjF_OrZMaJ6gupisIy4EvVbWe3umV_kWu12ZE4LCtnkDDKOEdDgu__6jllA0NN3_hNcFpcQjMHD8Ny8OQ9cjiseJVHsSyiirUNSSUkyeIyqN8FT--gNtip2jlm8FrcQWsqCf-eTX0sgomDib-mRDYiiQeWB1LgGaK.pdf" />
 		<Unit filename="era_aberta_grand_slams.txt" />
 		<Unit filename="exercicios.cpp" />
