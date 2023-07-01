@@ -16,10 +16,8 @@ int main()
 
     bt = BT_preench_arvore(bt, t);
     //T_Imprime(bt);
-    printf("-------------inativos--------------:\n");
-    makeSlanHank(bt, 0);
-    printf("--------------ativos---------------:\n");
-    makeSlanHank(bt, 1);
+
+    Menu(bt, t);
     //bt = BT_Retira(bt, "Carlos Alcaraz", t);
     //bt = BT_Retira(bt, "Hubert Hurkacz", t);
     //bt = BT_Retira(bt, "Francisco Cerundolo", t);

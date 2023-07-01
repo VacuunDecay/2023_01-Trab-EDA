@@ -7,17 +7,19 @@ void exercicoA(){
 void exercicoB(){
 
 }
-void exercicoC(){
-
+void exercicoC(BT* bt){
+    printf("-------------inativos--------------:\n");
+    makeSlanHank(bt, 0);
 }
-void exercicoD(){
-
+void exercicoD(BT* bt){
+    printf("--------------ativos---------------:\n");
+    makeSlanHank(bt, 1);
 }
-void exercicoE(){
-
+void exercicoE(BT* bt){
+  if(Qe(bt, 0) == 0)printf("Nenhum jogador aposentado venceu todos os slans no mesmo ano.\n");
 }
-void exercicoF(){
-
+void exercicoF(BT* bt){
+  if(Qf(bt, 0) == 0)printf("Nenhum jogador ativo venceu todos os slans no mesmo ano.\n");
 }
 void exercicoG(){
 
@@ -26,21 +28,13 @@ void MenuDeTestes(){
 
 }
 
-// Clear the screen based on the operating system
-void clearScreen(){
-    #ifdef _WIN32
-        system("cls"); // For Windows
-    #else
-        system("clear"); // For Linux and macOS
-    #endif
-}
 
-int Menu(){
+
+int Menu(BT* bt, int t){
     int choice;
     int submenuChoice;
 
     while (1) {
-        clearScreen();
         printf("\n------ Principal Menu ------\n");
         printf("1. exercico A\n");
         printf("2. exercico B\n");
@@ -57,13 +51,13 @@ int Menu(){
         switch (choice) {
             case 1: exercicoA(); break;
             case 2: exercicoB(); break;
-            case 3: exercicoC(); break;
-            case 4: exercicoD(); break;
-            case 5: exercicoE(); break;
-            case 6: exercicoF(); break;
+            case 3: exercicoC(bt); break;
+            case 4: exercicoD(bt); break;
+            case 5: exercicoE(bt); break;
+            case 6: exercicoF(bt); break;
             case 7: exercicoG(); break;
             case 9:
-                clearScreen();
+                cls();
                 printf("Exiting the program...\n");
                 return 0;
             default:
@@ -72,7 +66,7 @@ int Menu(){
 
         if (choice == 8) {
             while (1) {
-                clearScreen();
+                cls();
                 printf("\n------ Menu de Exercicios ------\n");
                 printf("1. Teste da BTree Horiginal\n");
                 printf("2. Teste da Lista Modificada\n");
@@ -86,7 +80,7 @@ int Menu(){
                     case 2: testeLista(); break;
                     //Adicione mas opsoes aqui
                     case 9:
-                        clearScreen();
+                        cls();
                         printf("Returning to Main Menu...\n");
                         break;
                     default:
