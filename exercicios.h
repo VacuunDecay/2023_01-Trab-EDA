@@ -42,7 +42,8 @@ TLSEp* Qf (BT * a, TLSEp* l, int av);
 /*
 (g) retirar todos os jogadores em atividade de um determinado país.
 */
-BT* retiraPais(BT *a,char *c);
+BT* retiraPais(BT *a,char *c,int t);
+BT* mostraPais(BT *a,char *c,int t);
 
 
 

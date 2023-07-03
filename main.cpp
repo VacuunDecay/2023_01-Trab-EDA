@@ -15,7 +15,12 @@ int main()
 
 
     bt = BT_preench_arvore(bt, t);
-    //T_Imprime(bt);
+    BT_Imprime(bt);
+
+    BT_Imprime_el(bt, "Andy Murray");
+    BT_Imprime_el(bt, "Andre Agassi");
+    BT_Imprime_el(bt, "Alexei Popyrin");
+
 
     Menu(bt, t);
     //bt = BT_Retira(bt, "Carlos Alcaraz", t);

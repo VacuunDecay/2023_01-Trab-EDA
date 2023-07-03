@@ -18,7 +18,9 @@ void exercicoG(BT* bt);
 //void MenuDeTestes(); // Acho que isso nao serve pra nada...
 //void TesteDeBTreeOriginal();
 //void TesteDeListaModificada();
-
+void menuRemover(BT* bt, int t);
+void menuImprimir(BT* bt);
+void menuInprimir_El(BT* bt);
 
 int Menu(BT* bt, int t);
 

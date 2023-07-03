@@ -4,7 +4,7 @@
 #include "MyUtil.h"
 #include "BTree.h"
 #include "MyUtil.h"
-
+/*
 void testeBTreeInset(){
     BT* tree = BT_Inicializa();
 
@@ -89,3 +89,4 @@ int profTeste(){
     printf("\n\n");
   }
 }
+*/

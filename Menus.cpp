@@ -1,9 +1,11 @@
 #include "Menus.h"
 #include "test.h"
  // made in part by chatGPT
+
 void exercicoA(){
 
 }
+
 void exercicoB(BT* bt){
   nascmentoPremi(bt);
 }
@@ -53,7 +55,31 @@ void exercicoG(BT* bt,int t){
     printf("Removendo os jogadores vindos de %s", pais);
     bt = retiraPais(bt, pais,t);
     BT_Imprime(bt);
+    mostraPais(bt, pais, t);
+
 }
+
+void menuRemover(BT* bt, int t){
+    char nome[50];
+    printf("Qual jogador quer remover: ");
+    scanf(" %[^\n]", &nome);
+
+    bt = BT_Retira(bt, nome, t);
+    printf("Jogador removido\n");
+    BT_Imprime(bt);
+    BT_Imprime_el(bt, nome);
+}
+void menuImprimir(BT* bt){
+    BT_Imprime(bt);
+}
+void menuInprimir_El(BT* bt){
+    char nome[50];
+    printf("Que jogador gostaria de ver:");
+    scanf(" %[^\n]", &nome);
+
+    BT_Imprime_el(bt, nome);
+}
+
 void MenuDeTestes(){
 
 }
@@ -96,19 +122,19 @@ int Menu(BT* bt, int t){
 
         if (choice == 8) {
             while (1) {
-                cls();
-                printf("\n------ Menu de Exercicios ------\n");
-                printf("1. Teste da BTree Horiginal\n");
-                printf("2. Teste da Lista Modificada\n");
-                // Add submenu options 3 to 9 here
+                //cls();
+                printf("\n------ De testes ------\n");
+                printf("1. Remover Jogador\n");
+                printf("2. Ver Arvore\n");
+                printf("3. Ver Jogador\n");
                 printf("9. Go back to Main Menu\n");
                 printf("Enter your choice: ");
                 scanf("%d", &submenuChoice);
 
                 switch (submenuChoice) {
-                    case 1: profTeste(); break;
-                    case 2: testeLista(); break;
-                    //Adicione mas opsoes aqui
+                    case 1: menuRemover(bt, t); break;
+                    case 2: menuImprimir(bt); break;
+                    case 3: menuInprimir_El(bt); break;
                     case 9:
                         cls();
                         printf("Returning to Main Menu...\n");

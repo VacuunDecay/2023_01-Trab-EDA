@@ -200,7 +200,7 @@ void BT_Imprime_el(BT *a, char *nome){
   printf("\n");
   printf("Nome: %s\n", no->chave[pos]);
 
-  if (!no->active){
+  if (!no->active[pos]){
     printf("Active: Nao\n");
   }
   else{
@@ -221,8 +221,7 @@ void BT_Imprime_el(BT *a, char *nome){
   }
 }
 
-BT *BT_Preenche_Slam(BT *T, char **line, int t)
-{
+BT *BT_Preenche_Slam(BT *T, char **line, int t){
   // estrae de char os valores do campo
   int ano = atoi(line[0]);
   char *win = line[2];
@@ -244,12 +243,9 @@ BT *BT_Preenche_Slam(BT *T, char **line, int t)
     T = BT_Insere(T, vice, t);
   }
 
-  if (!noWin){
-    noWin = BT_Busca_Nome(T, win, &posW);
-  }
-  if (!noVice){
-    noVice = BT_Busca_Nome(T, vice, &posV);
-  }
+
+  noWin = BT_Busca_Nome(T, win, &posW);
+  noVice = BT_Busca_Nome(T, vice, &posV);
 
   if (posW == -1){
     printf("Algo deu errado com o nome do vencedor\n");
@@ -308,16 +304,14 @@ BT *BT_Preenche_Act(BT *T, char **line, int t){
     T = BT_Insere(T, nome, t);
   }
 
-  if (!no){
-    no = BT_Busca_Nome(T, nome, &pos);
-  }
+  no = BT_Busca_Nome(T, nome, &pos);
 
   if (pos == -1){
     printf("Algo deu errado com o nome do jogador\n");
     return NULL;
   }
 
-  Act *ac = ac = (Act *)malloc(sizeof(Act));
+  Act *ac = (Act *)malloc(sizeof(Act));
 
   ac->idade = idade;
   ac->nasc = pais;
@@ -341,14 +335,6 @@ BT *BT_preench_arvore(BT *bt, int t){
     exit(1);
   }
   char line[100];
-  while (fgets(line, sizeof(line), fiSlans) != NULL){
-    int numTokens = 4;
-    char **tokens = splitStr(line, "\t", numTokens);
-
-    bt = BT_Preenche_Slam(bt, tokens, t);
-
-    free(tokens);
-  }
 
   while (fgets(line, sizeof(line), fiJogs) != NULL){
     int numTokens = 5;
@@ -358,6 +344,19 @@ BT *BT_preench_arvore(BT *bt, int t){
 
     free(tokens);
   }
+
+
+  while (fgets(line, sizeof(line), fiSlans) != NULL){
+    int numTokens = 4;
+    char **tokens = splitStr(line, "\t", numTokens);
+
+    bt = BT_Preenche_Slam(bt, tokens, t);
+
+    free(tokens);
+  }
+
+
+
   fclose(fiJogs);
   fclose(fiSlans);
   return bt;
@@ -621,6 +620,10 @@ BT *remover(BT *arv, char *ch, int t){
 BT *BT_Retira(BT *arv, char *nome, int t){
   if (!arv)
     return NULL;
+  if(!BT_Busca_Nome(arv, nome, NULL)){
+    printf("No nao encontrado\n");
+    return arv;
+  }
   return remover(arv, nome, t);
 }
 void Limpa_Remocao(BT *a){
