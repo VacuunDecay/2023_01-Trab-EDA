@@ -151,16 +151,15 @@ void exer_6 (BT * bt){
 }
 
 /**Nao implementada*/
-BT* retiraPais(BT *a,char *c){
+BT* retiraPais(BT *a,char *c,int t){
     if(!a)return a;
-    int t=(sizeof(a->nchaves)/sizeof(a->chave[0]));//testar para saber de funciona com vetor de char P.S:funciona com vetor de int
     for(int i=0;i<a->nchaves;i++){
         if(a->active[i]){
             if(strcmp(a->active[i]->nasc,c)==0)a=BT_Retira(a,a->chave[i],t);//se o jogador for ativo e a nacionalidade for igual a digitada remove
             i=0;//repassa a arvore para evitar que haja qualquer jogador de tal nacionalidade que tenha sido movido por alguma rotação
         }
     }
-    for(int i=0;i<a->nchaves;i++)a->filho[i]=retiraPais(a->filho[i],c);
+    for(int i=0;i<=a->nchaves;i++)a->filho[i]=retiraPais(a->filho[i],c,t);
     return a;
 }
 
