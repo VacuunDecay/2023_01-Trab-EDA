@@ -45,13 +45,13 @@ void exercicoF(BT* bt){
 
 
 }
-void exercicoG(BT* bt){
+void exercicoG(BT* bt,int t){
     char pais[50];
     printf("Digite um pais:");
     scanf("%s", &pais);
 
     printf("Removendo os jogadores vindos de %s", pais);
-    bt = retiraPais(bt, pais);
+    bt = retiraPais(bt, pais,t);
     BT_Imprime(bt);
 }
 void MenuDeTestes(){
@@ -85,7 +85,7 @@ int Menu(BT* bt, int t){
             case 4: exercicoD(bt); break;
             case 5: exercicoE(bt); break;
             case 6: exercicoF(bt); break;
-            case 7: exercicoG(bt); break;
+            case 7: exercicoG(bt,t); break;
             case 9:
                 cls();
                 printf("Exiting the program...\n");
