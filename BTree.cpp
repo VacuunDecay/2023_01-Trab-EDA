@@ -633,3 +633,22 @@ void Limpa_Remocao(BT *a){
   for (i = 0; i <= a->nchaves; i++)
     a->filho[i] = NULL;
 }
+
+
+
+//para a A
+
+void BT_Imprime_el_vencedor(BT *a, char* nome){
+  printf("imprime\n");
+    int pos = 0;
+    BT* no = BT_Busca_Nome(a, nome, &pos);
+
+    if(!no){
+        printf("no Nao encontrado");
+        return;
+    }
+    printf("\n");
+    printf("Nome: %s\n", no->chave[pos]);
+    printf("Slans: Sim\n");
+    TLSE_imprime(no->slans[pos]);
+}
