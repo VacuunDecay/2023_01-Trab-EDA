@@ -2,6 +2,40 @@
 
 //#include "TLSEno.h"
 
+//ainda não funciona
+
+void exer_1(BT* bt){
+    TLSEv * lAtivos = TLSEv_inicializa();
+    TLSEv * lAposentados = TLSEv_inicializa();
+  
+    Qa(bt, lAtivos, lAposentados);
+  
+    TLSEv_imprime_ord_e_libera(lAtivos, bt);
+    TLSEv_imprime_ord_e_libera(lAposentados, bt);
+}
+
+void Qa(BT *a, TLSEv *lAtivos, TLSEv *lAposentados){
+  if(a){
+    int i, k, titulos = 0;
+    for (i=0;i<=a->nchaves;i++){
+      if (a->slans[i]){
+        for (k=0;k<=3;k++){
+            if(a->slans[i] != 0)titulos++;
+          }
+        if(a->active[i]){
+          lAtivos = TLSEv_insere(lAtivos, titulos, a->chave[i]);
+          titulos = 0;
+        }
+        else {
+          lAposentados = TLSEv_insere(lAposentados, titulos, a->chave[i]);
+          titulos = 0;
+        }
+      }
+    }
+  }
+}
+
+
 void aux_exercicioB(BT* a,BT* b){
     if(!a||!b)return;
     for(int i=0;i<a->nchaves;i++){
