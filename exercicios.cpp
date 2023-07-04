@@ -72,8 +72,7 @@ void makeSlanHank(BT* a, int isAtivo){
 }
 
 /**Nao implementada*/
-TLSEp* Qe(BT * a, TLSEp* l, int av){
-  int alguem_venceu = av;
+TLSEp* Qe(BT * a, TLSEp* l){
   if(a){
     for(int i = 0; i < a->nchaves;i++){
       if((!a->active[i]) && (a->slans[i])){
@@ -81,23 +80,22 @@ TLSEp* Qe(BT * a, TLSEp* l, int av){
         TLSE *p = a->slans[i];
         while(p){
           if(p->info[0] !=0 && p->info[1] !=0 && p->info[2] !=0 && p->info[3] !=0 ){
-            alguem_venceu++;
             l = TLSEp_insere(l, p->ano, PL_criaPL(a, i));
 
           }
           p = p->prox;
         }
       }
-      l = Qe(a->filho[i], l, alguem_venceu);
+      l = Qe(a->filho[i], l);
     }
-    l = Qe(a->filho[a->nchaves], l, alguem_venceu);
+    l = Qe(a->filho[a->nchaves], l);
   }
   return l;
 }
 
 void exer_5(BT * bt){
   TLSEp* lista = NULL;
-  lista = Qe(bt, lista, 0);
+  lista = Qe(bt, lista);
 
   TLSEp* no = lista;
   if(lista)
@@ -112,8 +110,7 @@ void exer_5(BT * bt){
 }
 
 
-TLSEp* Qf(BT * a, TLSEp* l, int av){
-  int alguem_venceu = av;
+TLSEp* Qf(BT * a, TLSEp* l){
   if(a){
     for(int i = 0; i < a->nchaves;i++){
       if((a->active[i]) && (a->slans[i])){
@@ -121,23 +118,22 @@ TLSEp* Qf(BT * a, TLSEp* l, int av){
         TLSE *p = a->slans[i];
         while(p){
           if(p->info[0] !=0 && p->info[1] !=0 && p->info[2] !=0 && p->info[3] !=0 ){
-            alguem_venceu++;
             l = TLSEp_insere(l, p->ano, PL_criaPL(a, i));
 
           }
           p = p->prox;
         }
       }
-      l = Qf(a->filho[i], l, alguem_venceu);
+      l = Qf(a->filho[i], l);
     }
-    l = Qf(a->filho[a->nchaves], l, alguem_venceu);
+    l = Qf(a->filho[a->nchaves], l);
   }
   return l;
 }
 
 void exer_6 (BT * bt){
   TLSEp* lista = NULL;
-  lista = Qf(bt, lista, 0);
+  lista = Qf(bt, lista);
 
   TLSEp* no = lista;
   if(lista)
