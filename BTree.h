@@ -42,4 +42,8 @@ BT* BT_Retira(BT* arv, char* k, int t);
 void Limpa_Remocao(BT *a);
 
 
+//para a A
+void BT_Imprime_el_vencedor(BT *a, char* nome);
+
+
 #endif // Player_H
