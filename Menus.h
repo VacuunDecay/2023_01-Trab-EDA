@@ -6,19 +6,20 @@
 #include "MyUtil.h"
 #include "exercicios.h"
 #include "BTree.h"
+#include "TLSEv.h"
 
 // Function prototypes
-void exercicoA();
+void exercicoA(BT* bt);
 void exercicoB();
 void exercicoC(BT* bt);
 void exercicoD(BT* bt);
 void exercicoE(BT* bt);
 void exercicoF(BT* bt);
-void exercicoG(BT* bt);
+BT* exercicoG(BT* bt);
 //void MenuDeTestes(); // Acho que isso nao serve pra nada...
 //void TesteDeBTreeOriginal();
 //void TesteDeListaModificada();
-void menuRemover(BT* bt, int t);
+BT* menuRemover(BT* bt, int t);
 void menuImprimir(BT* bt);
 void menuInprimir_El(BT* bt);
 

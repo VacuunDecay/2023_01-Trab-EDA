@@ -15,7 +15,7 @@ int main()
 
 
     bt = BT_preench_arvore(bt, t);
-    BT_Imprime(bt);
+    //BT_Imprime(bt);
 
     BT_Imprime_el(bt, "Andy Murray");
     BT_Imprime_el(bt, "Andre Agassi");

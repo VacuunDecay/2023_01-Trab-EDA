@@ -228,24 +228,20 @@ BT *BT_Preenche_Slam(BT *T, char **line, int t){
   char *vice = line[3];
   strtok(vice, "\n");
 
+
   // posicoes dos jogadores dentro do no
   int posW = -1;
   int posV = -1;
 
-  // criando os nos se eles nao existirem
-  BT *noWin = BT_Busca_Nome(T, win, &posW);
-  if (!noWin){
-    T = BT_Insere(T, win, t);
-  }
+  T = BT_Insere(T, win, t);
+  T = BT_Insere(T, vice, t);
 
-  BT *noVice = BT_Busca_Nome(T, vice, &posV);
-  if (!noVice){
-    T = BT_Insere(T, vice, t);
-  }
-
+  BT* noWin;
+  BT *noVice;
 
   noWin = BT_Busca_Nome(T, win, &posW);
   noVice = BT_Busca_Nome(T, vice, &posV);
+
 
   if (posW == -1){
     printf("Algo deu errado com o nome do vencedor\n");
@@ -270,21 +266,29 @@ BT *BT_Preenche_Slam(BT *T, char **line, int t){
     return NULL;
   }
 
+  printf("\nVenc:%s,vice:%s,ano:%d,no venc:%s,no vice:%s,camp:%d",win,vice,ano,noWin->chave[posW],noVice->chave[posV],camp);
+
   // preencendo a informa��o do slam
   TLSE *liW = TLSE_busca(noWin->slans[posW], ano);
   TLSE *liV = TLSE_busca(noVice->slans[posV], ano);
+
+  TLSE *BliW = noWin->slans[posW];
+  TLSE *BliV = noVice->slans[posV];
+
   if (!liW){
-    liW = TLSE_insere(noWin->slans[posW], ano);
+    BliW = TLSE_insere(noWin->slans[posW], ano);
+    liW = BliW;
   }
   if (!liV){
-    liV = TLSE_insere(noVice->slans[posV], ano);
+    BliV = TLSE_insere(noVice->slans[posV], ano);
+    liV = BliV;
   }
 
   liW->info[camp] = 1;
   liV->info[camp] = 2;
 
-  noWin->slans[posW] = liW;
-  noVice->slans[posV] = liV;
+  noWin->slans[posW] = BliW;
+  noVice->slans[posV] = BliV;
 
   return T;
 }
@@ -344,7 +348,6 @@ BT *BT_preench_arvore(BT *bt, int t){
 
     free(tokens);
   }
-
 
   while (fgets(line, sizeof(line), fiSlans) != NULL){
     int numTokens = 4;

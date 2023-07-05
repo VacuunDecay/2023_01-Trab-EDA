@@ -1,11 +1,17 @@
 #include "Menus.h"
 #include "test.h"
- // made in part by chatGPT
 
-void exercicoA(){
 
+void exercicoA(BT* bt){
+    TLSEv * lAtivos = TLSEv_inicializa();
+    TLSEv * lAposentados = TLSEv_inicializa();
+
+    lAtivos = Qa(bt, lAtivos, 1);
+    lAposentados = Qa(bt, lAtivos, 0);
+
+    TLSEv_imprime(lAtivos);
+    TLSEv_imprime(lAposentados);
 }
-
 void exercicoB(BT* bt){
   nascmentoPremi(bt);
 }
@@ -19,7 +25,7 @@ void exercicoD(BT* bt){
 }
 void exercicoE(BT* bt){
   TLSEp* lista = NULL;
-  lista = Qe(bt, lista, 0);
+  lista = Qe(bt, lista);
 
   TLSEp* no = lista;
   if(lista)
@@ -34,7 +40,7 @@ void exercicoE(BT* bt){
 }
 void exercicoF(BT* bt){
   TLSEp* lista = NULL;
-  lista = Qf(bt, lista, 0);
+  lista = Qf(bt, lista);
 
   TLSEp* no = lista;
   if(lista)
@@ -47,19 +53,20 @@ void exercicoF(BT* bt){
 
 
 }
-void exercicoG(BT* bt,int t){
+BT* exercicoG(BT* bt,int t){
     char pais[50];
     printf("Digite um pais:");
     scanf("%s", &pais);
 
+    mostraPais(bt, pais, t);
     printf("Removendo os jogadores vindos de %s", pais);
     bt = retiraPais(bt, pais,t);
     BT_Imprime(bt);
-    mostraPais(bt, pais, t);
-
+    mostraPais(bt, pais, t);
+    return bt;
 }
 
-void menuRemover(BT* bt, int t){
+BT* menuRemover(BT* bt, int t){
     char nome[50];
     printf("Qual jogador quer remover: ");
     scanf(" %[^\n]", &nome);
@@ -68,6 +75,8 @@ void menuRemover(BT* bt, int t){
     printf("Jogador removido\n");
     BT_Imprime(bt);
     BT_Imprime_el(bt, nome);
+
+    return bt;
 }
 void menuImprimir(BT* bt){
     BT_Imprime(bt);
@@ -105,13 +114,13 @@ int Menu(BT* bt, int t){
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1: exercicoA(); break;
+            case 1: exercicoA(bt); break;
             case 2: exercicoB(bt); break;
             case 3: exercicoC(bt); break;
             case 4: exercicoD(bt); break;
             case 5: exercicoE(bt); break;
             case 6: exercicoF(bt); break;
-            case 7: exercicoG(bt,t); break;
+            case 7: bt = exercicoG(bt,t); break;
             case 9:
                 cls();
                 printf("Exiting the program...\n");

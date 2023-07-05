@@ -40,6 +40,13 @@ void cls() {
     #endif
 }
 
+char* country(char *a){//RETORNA O PAIS ENTRE COLCHETES
+    char *b=(char*)malloc(sizeof(char*));
+    strcpy(b,"[");
+    strcat(b,a);
+    strcat(b,"]");
+    return b;
+}
 
 void printIntvar(int var){
     printf("%d\n", var);

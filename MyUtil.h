@@ -19,7 +19,7 @@ void ln();
 /**Limpa a tela do terminal*/
 void cls();
 
-/**Retorna o pais entre colchetes RUSSIA -> [RUSSIA];*/
+/**Retorna o pais entre colchetes RUSSIA -> [RUSSIA]*/
 char* country(char *a);
 
 void printIntvar(int var);

@@ -5,6 +5,7 @@
 #include "BTree.h"
 #include "TLSEplayer.h"
 #include "TLSE.h"
+#include "TLSEv.h"
 /*
 (a)
 1.quantos jogadores aposentados possuem títulos?
@@ -12,7 +13,7 @@
 Informe-os separadamente em ordem decrescente do número de títulos (e os respectivos títulos por grand
 slam).
 */
-
+TLSEv* Qa(BT *a, TLSEv *l, int isActive);
 /*
 (b) se existem jogadores que nasceram no mesmo ano que seu compatriota (que possui um
 ranking) ganhou o primeiro grand slam?
@@ -33,12 +34,12 @@ ranking, levando-se em consideração somente os grand slams?
 (e) se existe algum jogador aposentado que ganhou todos os grand slams no mesmo ano? Se
 sim, retornar o(s) nome(s) do(s) jogador(es) e o(s) ano(s).
 */
-TLSEp* Qe (BT * a, TLSEp* l, int av);
+TLSEp* Qe (BT * a, TLSEp* l);
 /*
 (f) se existe algum jogador em atividade que ganhou todos os grand slams no mesmo ano? Se
 sim, retornar o(s) nome(s) do(s) jogador(es) e o(s) ano(s).
 */
-TLSEp* Qf (BT * a, TLSEp* l, int av);
+TLSEp* Qf (BT * a, TLSEp* l);
 /*
 (g) retirar todos os jogadores em atividade de um determinado país.
 */

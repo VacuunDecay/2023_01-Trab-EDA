@@ -25,8 +25,6 @@ TLSEp* TLSEp_insere(TLSEp *l, int point, PL* p){
     return l;
   }
 
-  //printf("inserindo: %s\n", novo->info->nome);
-
   if (l == NULL || point > l->point) {
     novo->prox = l;
     return novo;

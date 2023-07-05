@@ -6,14 +6,41 @@ TLSEv* TLSEv_inicializa(){
   return NULL;
 }
 
-TLSEv* TLSEv_insere(TLSEv *l, int titulos, char* nome){
+TLSEv* TLSEv_insere(TLSEv *l, int titulo,char* nome, TLSE* slan){
   TLSEv *novo = (TLSEv *) malloc(sizeof(TLSEv));
+  if(!novo) return l;
+  novo->id = 0;
+  novo->titulos = titulo;
   novo->nome = nome;
-  if(l){novo->id = l->id + 1;}
-  else{novo->id = 0;}
-  novo->prox = l;
-  return novo;
+  novo->slans = slan;
+  novo->prox = NULL;
+
+  if (!novo->nome) {
+    free(novo);
+    return l;
   }
+
+  if (l == NULL || titulo > l->titulos) {
+    novo->prox = l;
+    return novo;
+  }
+
+  TLSEv* atual = l;
+  TLSEv* anterior = NULL;
+
+  while (atual != NULL && titulo < atual->titulos) {
+    anterior = atual;
+    atual = atual->prox;
+  }
+
+  if (anterior != NULL) {
+    anterior->prox = novo;
+  }
+
+  novo->prox = atual;
+
+  return l;
+}
 
 void TLSEv_libera(TLSEv *l){
   if(l){
@@ -26,17 +53,20 @@ void TLSEv_libera(TLSEv *l){
   }
 }
 
-void TLSEv_imprime_ord_e_libera(TLSEv* l, BT* b){
-  if(l){
-    TLSEv* maior = NULL, * aux = l;
-    while(aux){
-      if(maior == NULL)maior = aux;
-      if(aux->titulos > maior->titulos)maior = aux;
-      BT_Imprime_el_vencedor(b, maior->nome);
-      aux = aux->prox;
-      l = TLSEv_remove(l, maior->id);
-    }
+void TLSEv_imprime(TLSEv *l){
+  if(!l) return;
+  TLSEv *p = l;
+  int i = 0;
+  while(p){
+    i++;
+    printf("--------------------\n");
+    printf("Nome: %s\n", p->nome);
+    printf("Titulos: %d\n", p->titulos);
+    printf("Slans:\n");
+    TLSE_imprime(l->slans);
+    p = p->prox;
   }
+  printf("\n");
 }
 
 TLSEv* TLSEv_remove(TLSEv* l, int id){
