@@ -1,20 +1,6 @@
 #include "exercicios.h"
 
-// #include "TLSEno.h"
 
-// ainda não funciona
-
-void exer_1(BT *bt){
-  /*
-  TLSEv * lAtivos = TLSEv_inicializa();
-  TLSEv * lAposentados = TLSEv_inicializa();
-
-  Qa(bt, lAtivos, lAposentados);
-
-  TLSEv_imprime_ord_e_libera(lAtivos, bt);
-  TLSEv_imprime_ord_e_libera(lAposentados, bt);
-  */
-}
 
 TLSEv *Qa(BT *a, TLSEv *l, int isActive){
   if (!a)
@@ -29,7 +15,7 @@ TLSEv *Qa(BT *a, TLSEv *l, int isActive){
       TLSE *no = a->slans[i];
       while (no){
         for (k = 0; k < 4; k++){
-          if (no->info[k])
+          if (no->info[k] != 0)
             titulos++;
         }
         no = no->prox;
@@ -70,7 +56,7 @@ void aux_exercicioB(BT* a,BT* b){
     for(int i=0;i<a->nchaves+1;i++)aux_exercicioB(a->filho[i],b);
 }
 
-/*Nao testada*/
+
 void nascmentoPremi(BT *a){
   if (!a)
     return;
@@ -100,7 +86,7 @@ TLSEp *prencheLiastaHank(BT *a, TLSEp *l, int isAtivo){
       if ((a->active[i] == 0 && isAtivo == 0) || (a->active[i] != 0 && isAtivo != 0)){
         // if(a->active == 0){
         if (a->slans != 0){
-          l = TLSEp_insere(l, pointCalc(a->slans[i]), PL_criaPL(a, i)); // cria um novo elemento pra l com o calculo da pontuação e um struct com referencias para o no original
+          l = TLSEp_insere(l, pointCalc(a->slans[i]), PL_criaPL(a, i)); // cria um novo elemento pra l com o calculo da pontuaï¿½ï¿½o e um struct com referencias para o no original
           // TLSEp_imprime(l);
         }
       }
@@ -118,7 +104,7 @@ void makeSlanHank(BT *a, int isAtivo){
   TLSEp_imprime(rankFicticio);
 }
 
-/**Nao implementada*/
+
 TLSEp *Qe(BT *a, TLSEp *l){
   if (a){
     for (int i = 0; i < a->nchaves; i++){
@@ -197,7 +183,7 @@ BT *retiraPais(BT *a, char *c, int t){
     if (a->active[i]){
       if (strcmp(a->active[i]->nasc, ch) == 0){
         a = BT_Retira(a, a->chave[i], t); // se o jogador for ativo e a nacionalidade for igual a digitada remove
-        i = 0;                            // repassa a arvore para evitar que haja qualquer jogador de tal nacionalidade que tenha sido movido por alguma rotação
+        i = 0;                            // repassa a arvore para evitar que haja qualquer jogador de tal nacionalidade que tenha sido movido por alguma rotaï¿½ï¿½o
       }
     }
   }
@@ -221,4 +207,4 @@ BT *mostraPais(BT *a, char *c, int t){
   return a;
 }
 
-/*Exercico C e D*/
+

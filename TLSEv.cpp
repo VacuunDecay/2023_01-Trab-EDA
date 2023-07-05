@@ -63,7 +63,7 @@ void TLSEv_imprime(TLSEv *l){
     printf("Nome: %s\n", p->nome);
     printf("Titulos: %d\n", p->titulos);
     printf("Slans:\n");
-    TLSE_imprime(l->slans);
+    TLSE_imprime(p->slans);
     p = p->prox;
   }
   printf("\n");

@@ -74,36 +74,3 @@ void TLSEp_libera(TLSEp *l){
   }
 }
 
-/*
-TLSEp* TLSEp_busca(TLSEp *l, int point){
-  TLSEp *p = l;
-  while((p) && (p->point != point)) p = p->prox;
-  return p;
-}
-
-//By chatGPT
-TLSEp* TLSEp_retira(TLSEp *l, int point) {
-    TLSEp *ant = NULL; // Pointer to the previous node
-    TLSEp *p = l; // Pointer to traverse the list
-
-    // Search for the element in the list
-    while (p != NULL && p->point != point) {
-        ant = p;
-        p = p->prox;
-    }
-
-    // If the element is found
-    if (p != NULL) {
-        // If it's the first element
-        if (ant == NULL)
-            l = p->prox;
-        else
-            ant->prox = p->prox;
-
-        free(p); // Free the memory for the node
-    }
-
-    return l; // Return the updated list
-}
-    */
-

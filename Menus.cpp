@@ -1,5 +1,4 @@
 #include "Menus.h"
-#include "test.h"
 
 
 void exercicoA(BT* bt){
@@ -7,21 +6,27 @@ void exercicoA(BT* bt){
     TLSEv * lAposentados = TLSEv_inicializa();
 
     lAtivos = Qa(bt, lAtivos, 1);
-    lAposentados = Qa(bt, lAtivos, 0);
+    lAposentados = Qa(bt, lAposentados, 0);
 
-    TLSEv_imprime(lAtivos);
     TLSEv_imprime(lAposentados);
+    waitKey();
+    TLSEv_imprime(lAtivos);
+    waitKey();
 }
 void exercicoB(BT* bt){
   nascmentoPremi(bt);
+  waitKey();
 }
 void exercicoC(BT* bt){
     printf("-------------inativos--------------:\n");
+    waitKey();
     makeSlanHank(bt, 0);
 }
 void exercicoD(BT* bt){
     printf("--------------ativos---------------:\n");
+    waitKey();
     makeSlanHank(bt, 1);
+    waitKey();
 }
 void exercicoE(BT* bt){
   TLSEp* lista = NULL;
@@ -36,7 +41,7 @@ void exercicoE(BT* bt){
   else
     printf("Nenhum jogador aposentado venceu todos os slans no mesmo ano.\n");
 
-
+  waitKey();
 }
 void exercicoF(BT* bt){
   TLSEp* lista = NULL;
@@ -51,7 +56,7 @@ void exercicoF(BT* bt){
   else
     printf("Nenhum jogador aposentado venceu todos os slans no mesmo ano.\n");
 
-
+  waitKey();
 }
 BT* exercicoG(BT* bt,int t){
     char pais[50];
@@ -62,7 +67,8 @@ BT* exercicoG(BT* bt,int t){
     printf("Removendo os jogadores vindos de %s", pais);
     bt = retiraPais(bt, pais,t);
     BT_Imprime(bt);
-    mostraPais(bt, pais, t);
+    mostraPais(bt, pais, t);
+    waitKey();
     return bt;
 }
 
@@ -75,11 +81,12 @@ BT* menuRemover(BT* bt, int t){
     printf("Jogador removido\n");
     BT_Imprime(bt);
     BT_Imprime_el(bt, nome);
-
+    waitKey();
     return bt;
 }
 void menuImprimir(BT* bt){
     BT_Imprime(bt);
+    waitKey();
 }
 void menuInprimir_El(BT* bt){
     char nome[50];
@@ -87,12 +94,8 @@ void menuInprimir_El(BT* bt){
     scanf(" %[^\n]", &nome);
 
     BT_Imprime_el(bt, nome);
+    waitKey();
 }
-
-void MenuDeTestes(){
-
-}
-
 
 
 int Menu(BT* bt, int t){
@@ -100,6 +103,7 @@ int Menu(BT* bt, int t){
     int submenuChoice;
 
     while (1) {
+        cls();
         printf("\n------ Principal Menu ------\n");
         printf("1. exercico A\n");
         printf("2. exercico B\n");
@@ -131,7 +135,7 @@ int Menu(BT* bt, int t){
 
         if (choice == 8) {
             while (1) {
-                //cls();
+                cls();
                 printf("\n------ De testes ------\n");
                 printf("1. Remover Jogador\n");
                 printf("2. Ver Arvore\n");
@@ -160,5 +164,3 @@ int Menu(BT* bt, int t){
 
     return 0;
 }
-
-// Implement the functions for the menu options and submenu options here

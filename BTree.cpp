@@ -43,8 +43,8 @@ BT *BT_Libera(BT *a){
       free(a->active[i]);
 
     for (int i = 0; i < a->nchaves; i++){
-      //printf("Liberando os slans de: %s\n", a->chave[i]);
-      //TLSE_libera(a->slans[i]);
+      printf("Liberando os slans de: %s\n", a->chave[i]);
+      TLSE_libera(a->slans[i]);
     }
 
     free(a->chave);
@@ -119,7 +119,6 @@ BT *Insere_Nao_Completo(BT *x, char *k, int t){
       i--;
     }
     x->chave[i+1] = k;
-    // slans e active?
     x->nchaves++;
     return x;
   }
@@ -189,7 +188,7 @@ void BT_Imprime(BT *a){
 }
 
 void BT_Imprime_el(BT *a, char *nome){
-  int pos = 0;
+  int pos = -1;
   BT *no = BT_Busca_Nome(a, nome, &pos);
 
   if (!no){
@@ -268,7 +267,7 @@ BT *BT_Preenche_Slam(BT *T, char **line, int t){
 
   printf("\nVenc:%s,vice:%s,ano:%d,no venc:%s,no vice:%s,camp:%d",win,vice,ano,noWin->chave[posW],noVice->chave[posV],camp);
 
-  // preencendo a informa��o do slam
+  // preencendo a informacao do slam
   TLSE *liW = TLSE_busca(noWin->slans[posW], ano);
   TLSE *liV = TLSE_busca(noVice->slans[posV], ano);
 
@@ -340,14 +339,7 @@ BT *BT_preench_arvore(BT *bt, int t){
   }
   char line[100];
 
-  while (fgets(line, sizeof(line), fiJogs) != NULL){
-    int numTokens = 5;
-    char **tokens = splitStr(line, "\t", numTokens);
 
-    bt = BT_Preenche_Act(bt, tokens, t);
-
-    free(tokens);
-  }
 
   while (fgets(line, sizeof(line), fiSlans) != NULL){
     int numTokens = 4;
@@ -358,7 +350,14 @@ BT *BT_preench_arvore(BT *bt, int t){
     free(tokens);
   }
 
+  while (fgets(line, sizeof(line), fiJogs) != NULL){
+    int numTokens = 5;
+    char **tokens = splitStr(line, "\t", numTokens);
 
+    bt = BT_Preenche_Act(bt, tokens, t);
+
+    free(tokens);
+  }
 
   fclose(fiJogs);
   fclose(fiSlans);

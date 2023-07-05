@@ -25,8 +25,6 @@ char** splitStr(char* line, char* key, int numCol){
         col = strtok(NULL, key);
     }
 
-    //*numCol = i;
-
     return cols;
 }
 

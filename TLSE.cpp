@@ -25,9 +25,8 @@ void TLSE_imprime(TLSE *l){
   while(p){
     int *vet = p->info;
     printf("--------------------\n");
-    printf("Ano: %d\n", p->ano);
+    printf("Ano: %d ", p->ano);
     printf("Slams: %d, %d, %d, %d\n", p->info[0], p->info[1], p->info[2], p->info[3]);
-    //printf("Slams: %d, %d, %d, %d\n", vet[0],vet[1],vet[2],vet[3]);
     p = p->prox;
   }
   printf("\n");
@@ -47,7 +46,6 @@ void TLSE_imprime_ident(TLSE *l, int andar){
 
     for(j=0; j<=andar; j++) printf("\t");
     printf("Slams: %d, %d, %d, %d\n", p->info[0], p->info[1], p->info[2], p->info[3]);
-    //printf("Slams: %d, %d, %d, %d\n", vet[0],vet[1],vet[2],vet[3]);
     p = p->prox;
   }
   printf("\n");
@@ -72,26 +70,23 @@ TLSE* TLSE_busca(TLSE *l, int ano){
 
 //By chatGPT
 TLSE* TLSE_retira(TLSE *l, int ano) {
-    TLSE *ant = NULL; // Pointer to the previous node
-    TLSE *p = l; // Pointer to traverse the list
+    TLSE *ant = NULL; 
+    TLSE *p = l; 
 
-    // Search for the element in the list
     while (p != NULL && p->ano != ano) {
         ant = p;
         p = p->prox;
     }
 
-    // If the element is found
+    
     if (p != NULL) {
-        // If it's the first element
         if (ant == NULL)
             l = p->prox;
         else
             ant->prox = p->prox;
-
-        free(p); // Free the memory for the node
+        free(p); 
     }
 
-    return l; // Return the updated list
+    return l; 
 }
 

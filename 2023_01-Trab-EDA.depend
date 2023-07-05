@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1688516637 source:c:\users\catreco\documents\github\2023_01-trab-eda\btree.cpp
+1688522212 source:c:\users\catreco\documents\github\2023_01-trab-eda\btree.cpp
 	"BTree.h"
 	"MyUtil.h"
 
@@ -15,7 +15,7 @@
 
 1688507202 c:\users\catreco\documents\github\2023_01-trab-eda\myutil.h
 
-1688513263 source:c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.cpp
+1688522209 source:c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.cpp
 	"exercicios.h"
 
 1688508262 c:\users\catreco\documents\github\2023_01-trab-eda\exercicios.h
@@ -25,10 +25,9 @@
 	"TLSE.h"
 	"TLSEv.h"
 
-1688516748 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
+1688522204 source:c:\users\catreco\documents\github\2023_01-trab-eda\main.cpp
 	<stdio.h>
 	<stdlib.h>
-	"test.h"
 	"Menus.h"
 	"TLSE.h"
 	"BTree.h"
@@ -45,11 +44,11 @@
 	"BTree.h"
 	"TLSEv.h"
 
-1688509889 source:c:\users\catreco\documents\github\2023_01-trab-eda\menus.cpp
+1688520365 source:c:\users\catreco\documents\github\2023_01-trab-eda\menus.cpp
 	"Menus.h"
 	"test.h"
 
-1688507198 source:c:\users\catreco\documents\github\2023_01-trab-eda\myutil.cpp
+1688522457 source:c:\users\catreco\documents\github\2023_01-trab-eda\myutil.cpp
 	"MyUtil.h"
 	<stdio.h>
 	<stdlib.h>
@@ -70,10 +69,10 @@
 	"BTree.h"
 	"MyUtil.h"
 
-1688214340 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlse.cpp
+1688522613 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlse.cpp
 	"TLSE.h"
 
-1688509254 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlseplayer.cpp
+1688522612 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlseplayer.cpp
 	"TLSEplayer.h"
 
 1688231557 c:\users\catreco\documents\github\2023_01-trab-eda\tlseplayer.h
@@ -84,7 +83,7 @@
 	"BTree.h"
 	"TLSE.h"
 
-1688509975 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlsev.cpp
+1688522610 source:c:\users\catreco\documents\github\2023_01-trab-eda\tlsev.cpp
 	"TLSEv.h"
 	"TLSE.h"
 	"BTree.h"
